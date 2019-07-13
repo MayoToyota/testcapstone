@@ -13,12 +13,12 @@ Your project description.
 A. Top down
 
 Company make a brief idea to see how employees think about it and how many people are interested in to join.
-Company ideas pop up on Main page and people can select "join"/"watching"/"comment"/"no interest" etc. (probably showing profile name is only option)
-Calculate the number of each reaction
+Company ideas pop up on Main page and people can select "join"/"watching"/"comment"/"no interest" etc. (probably showing profile name is only option).
+Calculate the number of each reaction.
 Make a cashflow? 
 
 B. Bottom Up
 
-Employees can build their own business within company
-The ideas appear on Main page, and people can select "join"/"watching"/"comment"/"no interest" etc.
-Auto calculate for cashflow
+Employees can build their own business within company.
+The ideas appear on Main page, and people can select "join"/"watching"/"comment"/"no interest" etc..
+Auto calculate for cashflow.
