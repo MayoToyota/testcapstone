@@ -1,8 +1,4 @@
-# YOUR PROJECT NAME
-Your project description.
-
-
-[Tool for Intrapreneurship Program]
+# Intrapreneurship Program Tool
 
 1. MyAccount page (profile, status of the own ideas, notification related to interest)
 2. Draft page (fill out about a new business)
