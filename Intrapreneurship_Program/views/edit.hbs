@@ -1,0 +1,31 @@
+<h2>Edit your idea</h2>
+<p>
+    <form action="/edit/:id" method="POST">
+        <input type='hidden' name='id' value={{ idea.id }} />
+        <div class="form-group">
+            summary: <input class="form-control" type="text" name="summary" value="{{ idea.summary }}" />
+            <br>
+            Description : <textarea rows="10" cols="80" class="form-control"
+                name="description"> {{ idea.description }} </textarea>
+            <br>
+            initialCost: <input class="form-control" type="text" name="initialCost" value="{{ idea.initialCost }}" />
+            <br>
+            runningCost: <input class="form-control" type="text" name="runningCost" value="{{ idea.runningCost }}" />
+            <br>
+            numberOfParticipant: <input class="form-control" type="text" name="numberOfParticipant"
+                value="{{ idea.numberOfParticipant }}" />
+            <br>
+            goalYears: <input class="form-control" type="text" name="goalYears" value="{{ idea.goalYears }}" />
+        </div>
+        <br>
+        <br>
+        <button class="btn btn-primary" type="submit">Submit Button</button>
+
+       <br>
+        <br>
+
+        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
+        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+    
+    </form>

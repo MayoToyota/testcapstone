@@ -1,0 +1,53 @@
+<canvas id="myChart" width="400" height="400"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0">
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>
+
+
+<h2>Analysis - Idea # :{{ id }}</h2>
+<form action="/deital/:id" method="POST">
+<div id={{ id }}>
+    summary : {{ idea.summary }}
+    <br>
+    description : {{ idea.description }}
+    <br>
+    InitialCost : {{ idea.initialCost }}
+    <br>
+    RunningCost : {{ idea.runningCost }}
+    <br>
+    Limit of Participants : {{ idea.numberOfParticipant }}
+    <br>
+    Goal Years : {{ idea.goalYears }}
+    <br>
+    Participants : {{ participants.name }}
+    <br>
+    Comment : <textarea rows="10" cols="80" name="Comments"></textarea>
+<br>
+    Comments : {{ Comment }}
+</div>
+ <br>
+        <br>
+
+        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
+        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+    
+</form>

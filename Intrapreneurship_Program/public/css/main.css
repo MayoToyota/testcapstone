@@ -1,0 +1,38 @@
+#ideas-list {
+    border: 2px solid black
+}
+
+.line{
+    height: 4px;
+    width: 100%;
+    background-color: black;
+}
+
+body {
+  font-family: 'Amatic SC', cursive;
+
+  font-family: 14px 'M PLUS Rounded 1c', sans-serif;
+    padding: 50px;
+  }
+
+  a {
+    font-family: 'Amatic SC', cursive;
+    font:20px;
+  }
+
+  h1 {
+    font-family: 'Amatic SC', cursive;
+    color: #364e96;
+    padding: 0.3em 0;
+    border-bottom: double 5px #364e96;
+
+    
+  }
+
+  h2 {
+    font-family: 'Amatic SC', cursive;
+    padding: 0.5em;
+    border: 3px solid #ccc;
+    border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
+  }
+

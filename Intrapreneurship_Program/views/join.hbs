@@ -1,0 +1,23 @@
+<form method="POST" action="/join/:id">
+    <div class="form-group">
+        Name: <input class="form-control" type="text" name="name" value="{{ user.name }}" />
+        <br>
+        Email: <input class="form-control" type="text" name="email" />
+        <br>
+        Position: <input class="form-control" type="text" name="position" />
+        <br>
+        Reason: <textarea rows="10" cols="80" class="form-control" name="reason"></textarea>
+        <br>
+    </div>
+    <br>
+    <br>
+    <button class="btn btn-dark btn-lg btn-block" type="submit">Join</button>
+     <br>
+        <br>
+
+        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
+        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+    
+
+</form>

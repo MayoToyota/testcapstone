@@ -1,0 +1,79 @@
+<h2>Intrapreneurship is as necessary for your company’s future as swimming is for a shark — if you don’t do it, you’ll
+    die.
+
+    It is like a trip to the moon - everyone is talking about it but probably no one you know has ever been there.
+    Embracing intrapreneurship is a decision to let the most entrepreneurial people in the company take risk and
+    use innovative potential to add value to our business.
+</h2>
+<br>
+<p>
+    <a class="btn btn-outline-danger" href="/register">Create an account</a>
+    <a class="btn btn-outline-danger" href="/myaccount">Go To My Page</a>
+</p>
+<br>
+<div class="card">
+    {{#each ideas }}
+    <div class="card-header">
+        {{ id }} : {{ this.summary }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Limit of Participants :{{ this.numberOfParticipant }}</h5>
+        <p class="card-text">Description : <br>
+        {{ this.description }}</p>
+        <p>
+            <a href="/join/{{ this.id }}" class="btn btn-info"> JOIN </a>
+            <a href="/detail/{{ this.id }}" class="btn btn-outline-warning">DETAILS</a>
+            <a href="/comment/{{ this.id }}" class="btn btn-outline-secondary">COMMENT</a>
+            <DIV style="width:64px" class="letsVote" data-id="countfile_id1" data-lock="lock_name1">
+                <p>
+                    <div>
+                        <img src="http://urbanqee.com/webutil/like/img/smile-face480.png"
+                            style="height:35px; width:35px;">
+                        <img src="http://www.manga-sozai.com/data/wp-content/uploads/2015/09/038_hukidashi.jpg"
+                            style="height:35px; width:35px;">
+                    </div>
+                </p>
+                <div id="countfile_id1" class="balloon_right">
+                </div>
+                <!-- いいね！カウント件数 -->
+                <div id="ex01-balloon-r" class="balloon_right" style="margin-top:6px;margin-left:6px">
+                </div>
+            </DIV>
+        </p>
+        <script>
+            $(function () {
+                $('.btn_vote').click(function () {
+                    $(this).toggleClass('on');
+                    var id = $(this).attr('id');
+                    $(this).hasClass('on') ? Vote(id, 'plus') : Vote(id, 'minus');
+                });
+            });
+            function Vote(id, plus) {
+                cls = $('.' + id);
+                cls_num = Number(cls.html());
+                count = plus == 'minus' ? cls_num - 1 : cls_num + 1;
+                $.get('vote.php', { 'file': id, 'count': count }, function () {
+                    cls.html(count)
+                });
+            }
+        </script>
+        <button id='increment'></button>
+        <div id='count'> {{ counter }}</div>
+        <script src='/lib/axios/axios.min.js'></script>
+        <script>
+            document.getElementById('increment').addEventListener('click', updateCounter);
+
+            async function updateCounter() {
+                const url = '/api/increment';
+                let response = await axios.get(url);
+                let counterObj = response.data;
+                document.getElementById('count').innerText = counterObj.counter;
+
+            }
+        </script>
+    </div>
+    {{/each}}
+</div>
+
+<br>
+<br>
