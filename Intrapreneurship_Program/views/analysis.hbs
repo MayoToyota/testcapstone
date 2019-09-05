@@ -1,53 +1,131 @@
-<canvas id="myChart" width="400" height="400"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0">
-var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
-
-    // The data for our dataset
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45]
-        }]
-    },
-
-    // Configuration options go here
-    options: {}
-});
-</script>
-
-
-<h2>Analysis - Idea # :{{ id }}</h2>
-<form action="/deital/:id" method="POST">
-<div id={{ id }}>
-    summary : {{ idea.summary }}
-    <br>
-    description : {{ idea.description }}
-    <br>
-    InitialCost : {{ idea.initialCost }}
-    <br>
-    RunningCost : {{ idea.runningCost }}
-    <br>
-    Limit of Participants : {{ idea.numberOfParticipant }}
-    <br>
-    Goal Years : {{ idea.goalYears }}
-    <br>
-    Participants : {{ participants.name }}
-    <br>
-    Comment : <textarea rows="10" cols="80" name="Comments"></textarea>
+<h2>Analysis - Idea # :{{ ideaId }}</h2>
 <br>
-    Comments : {{ Comment }}
-</div>
- <br>
-        <br>
+<form action="/analysis/{{ ideaId }}" method="POST">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Month</th>
+                <th scope="col">1</th>
+                <th scope="col">2</th>
+                <th scope="col">3</th>
+                <th scope="col">4</th>
+                <th scope="col">5</th>
+                <th scope="col">6</th>
+                <th scope="col">7</th>
+                <th scope="col">8</th>
+                <th scope="col">9</th>
+                <th scope="col">10</th>
+                <th scope="col">11</th>
+                <th scope="col">12</th>
+                <th scope="col">TOTAL</th>
 
-        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Initial Cost</th>
+                <td>{{ initial }}</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td> {{ initial }} </td>
+            </tr>
+            <tr>
+                <th scope="row">Monthly Running Cost</th>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td> {{ totalRunning }} </td>
+            </tr>
+            <tr>
+                <th scope="row">Total Monthly Expense</th>
+                <td>{{ totalFirst }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td>{{ running }}</td>
+                <td> {{ totalRunning }} </td>
+            </tr>
+            <tr>
+                <th scope="row">Goal of Monthly Income</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>{{ income }}</td>
+                <td>{{ income }}</td>
+                <td>{{ income }}</td>
+                <td>{{ income }}</td>
+                <td>{{ income }}</td>
+                <td>{{ income }}</td>
+                <td>{{ income }}</td>
+                <td>{{ income }}</td>
+                <td>{{ income }}</td>
+                <td> {{ totalIncome }} </td>
+            </tr>
+            <tr>
+                <th scope="row">Monthly NOI</th>
+                <td>{{ FirstmonthNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td> {{ totalIncome }} </td>
+            </tr>
+             <tr>
+                <th scope="row">NOI</th>
+                <td>{{ FirstmonthNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td>{{ MonthlyNoi }}</td>
+                <td> {{ totalIncome }} </td>
+            </tr>
+        </tbody>
+    </table>
     
+    <br>
+    <br>
+
+    <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
+    <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+    <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+
 </form>

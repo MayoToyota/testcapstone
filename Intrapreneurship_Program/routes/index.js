@@ -125,11 +125,12 @@ router.use(isLoggedIn);
 
 //Join page
 router.get('/join/:id', async (req, res) => {
-    res.render('join')
+    res.render('join', { ideaId: req.params.id })
 });
 
 router.post('/join/:id', async (req, res) => {
     let { id, name, email, position, reason } = req.body;
+    let ideaId = req.params.id;
 
     let participant;
     try {
@@ -144,7 +145,7 @@ router.post('/join/:id', async (req, res) => {
         }
         else {
             participant = await Participant.create(req.body);
-            participant.ideaId = req.idea.id;
+            participant.ideaId = ideaId;
             await participant.save()
         }
     }
@@ -253,9 +254,46 @@ router.get("/delete/:id", async (req, res) => {
 
 })
 
-//analysis
-router.get('/analysis/:id', (req, res) => {
-        res.render('analysis');
+//Analysis
+router.get('/analysis/:id', async (req, res) => {
+    let idea = await Idea.findByPk(req.params.id)
+    let ideaId = req.params.id;
+
+    try {
+        if (ideaId) {
+            let initial = idea.initialCost
+            console.log(initial);
+            let running = idea.runningCost
+            let totalRunning = running * 12
+            let goalMonth = idea.goalYears
+            let goalMonthEx = initial + (running * goalMonth)
+            let totalFirst = initial + running
+            let income = goalMonthEx / (goalMonth - 3)
+            let totalIncome = income * 9
+            let FirstmonthNoi = totalFirst - income
+            /*
+            for (i = 0; i < 12; i++) {
+                let MonthlyNoi = income[i] - running[i]
+                let TotalNoi = MonthlyNoi[i].reduce((prev, curr) => prev + curr)
+            }
+            */
+            res.render('analysis',
+                {
+                    idea,
+                    ideaId,
+                    initial, 
+                    running,
+                    totalRunning,
+                    totalFirst,
+                    totalIncome,
+                    FirstmonthNoi
+                });
+        }
+    }
+    catch (e) {
+        console.log(e)
+    }
+
 });
 
 
