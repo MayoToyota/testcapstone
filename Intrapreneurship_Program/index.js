@@ -29,7 +29,7 @@ app.use(flash());
 app.use(session({
     secret: 'keyboad cat'
 }));
-app.use(passport.initialize());
+app.use(passport.initialize()); 
 app.use(passport.session());
 passport.use(db.User.createStrategy());
 passport.use(new GithubStrategy({

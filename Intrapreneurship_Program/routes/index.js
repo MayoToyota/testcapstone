@@ -2,7 +2,7 @@ const router = require('../node_modules/express').Router();
 const Idea = require('../db').Idea;
 const User = require('../db').User;
 const Participant = require('../db').Participant;
-const Comment = require('../db').Comment
+const Comment = require('../db').Comment;
 const passport = require('../node_modules/passport/lib');
 const isLoggedIn = require('../controllers/auth-controller').isLoggedIn;
 const isAdmin = require('../controllers/auth-controller').isAdmin;
@@ -13,22 +13,19 @@ router.get('/', async (req, res) => {
     res.render('home', { ideas });
 });
 
-
 //Detail page
 router.get('/detail/:id', async (req, res) => {
-
     let idea = await Idea.findByPk(req.params.id, {
         include: [
             {
                 model: Participant,
-                model: Comment
-            }
-        ]
+                model: Comment,
+            },
+        ],
     });
 
-    res.render('detail', { idea })
+    res.render('detail', { idea });
 });
-
 
 //Comment page
 router.get('/comment/:id', async (req, res) => {
@@ -36,34 +33,31 @@ router.get('/comment/:id', async (req, res) => {
         include: [
             {
                 model: Participant,
-                model: Comment
-            }
-        ]
+                model: Comment,
+            },
+        ],
     });
 
-    res.render('detail', { idea })
-
+    res.render('detail', { idea });
 });
 
 router.post('/comment/:id', async (req, res) => {
     let { id } = req.params;
-    await Idea.upsert(req.body)
+    await Idea.upsert(req.body);
 
-    let reflect = `/comment/${id}`
-    res.redirect(reflect)
+    let reflect = `/comment/${id}`;
+    res.redirect(reflect);
 });
 
-
 //Counter
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
     res.render('index', { title: 'Counter', counter });
 });
 
 router.get('/api/increment', (req, res) => {
     counter++;
-    res.json({ counter })
-})
-
+    res.json({ counter });
+});
 
 //Howto page
 router.get('/howto', (req, res) => {
@@ -75,17 +69,29 @@ router.get('/login', (req, res) => {
     res.render('login', { flashes: req.flash('error') });
 });
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: 'Your username or password is incorrect' }), (req, res) => {
-    res.redirect('/myaccount');
-});
+router.post(
+    '/login',
+    passport.authenticate('local', {
+        failureRedirect: '/login',
+        failureFlash: 'Your username or password is incorrect',
+    }),
+    (req, res) => {
+        res.redirect('/myaccount');
+    }
+);
 
 router.get('/loginGithub', passport.authenticate('github', { scope: ['user:email'] }));
 
-router.get('/auth/callback',
-    passport.authenticate('github', { failureRedirect: '/login', failureFlash: 'Failed to login' }),
-    (req, res) => { res.redirect('/myaccount') }
+router.get(
+    '/auth/callback',
+    passport.authenticate('github', {
+        failureRedirect: '/login',
+        failureFlash: 'Failed to login',
+    }),
+    (req, res) => {
+        res.redirect('/myaccount');
+    }
 );
-
 
 //register
 router.get('/register', (req, res) => {
@@ -125,7 +131,7 @@ router.use(isLoggedIn);
 
 //Join page
 router.get('/join/:id', async (req, res) => {
-    res.render('join', { ideaId: req.params.id })
+    res.render('join', { ideaId: req.params.id });
 });
 
 router.post('/join/:id', async (req, res) => {
@@ -135,38 +141,34 @@ router.post('/join/:id', async (req, res) => {
     let participant;
     try {
         if (id) {
-            participant = await Participant.findByPk(id)
-            participant.name = name
-            participant.email = email
-            participant.position = position
-            participant.reason = reason
+            participant = await Participant.findByPk(id);
+            participant.name = name;
+            participant.email = email;
+            participant.position = position;
+            participant.reason = reason;
 
-            await participant.save()
-        }
-        else {
+            await participant.save();
+        } else {
             participant = await Participant.create(req.body);
             participant.ideaId = ideaId;
-            await participant.save()
+            await participant.save();
         }
-    }
-    catch (e) {
-        console.log(e)
+    } catch (e) {
+        console.log(e);
     }
 
-    res.redirect('/myaccount')
+    res.redirect('/myaccount');
 });
 
 //MyAccount page
 router.get('/myaccount', async (req, res) => {
     let ideas = await Idea.findAll({
         where: {
-            userId: req.user.id
-
-        }
+            userId: req.user.id,
+        },
     });
     res.render('myaccount', { ideas });
 });
-
 
 //Calculator
 router.get('/calculator', (req, res) => {
@@ -174,11 +176,11 @@ router.get('/calculator', (req, res) => {
 });
 
 router.post('/calculator', async (req, res) => {
-    let total1 = req.body.hourlyIncome * req.body.count1 * 2080
-    let total2 = req.body.amount * req.body.count2
-    let totalAmount = total1 + total2
+    let total1 = req.body.hourlyIncome * req.body.count1 * 2080;
+    let total2 = req.body.amount * req.body.count2;
+    let totalAmount = total1 + total2;
     res.redirect('/calculator', { totalAmount });
-})
+});
 
 // Creating an idea
 router.get('/idea', (req, res) => {
@@ -186,29 +188,35 @@ router.get('/idea', (req, res) => {
 });
 
 router.post('/idea', async (req, res) => {
-    let { id, summary, description, initialCost, runningCost, goalYears, numberOfParticipant } = req.body;
+    let {
+        id,
+        summary,
+        description,
+        initialCost,
+        runningCost,
+        goalYears,
+        numberOfParticipant,
+    } = req.body;
 
     let idea;
     try {
         if (id) {
             idea = await Idea.findByPk(id);
-            idea.summary = summary
-            idea.description = description
-            idea.initialCost = Number.parseInt(initialCost)
-            idea.runningCost = Number.parseInt(runningCost)
-            idea.goalYears = Number.parseInt(goalYears)
-            idea.numberOfParticipant = Number.parseInt(numberOfParticipant)
+            idea.summary = summary;
+            idea.description = description;
+            idea.initialCost = Number.parseInt(initialCost);
+            idea.runningCost = Number.parseInt(runningCost);
+            idea.goalYears = Number.parseInt(goalYears);
+            idea.numberOfParticipant = Number.parseInt(numberOfParticipant);
 
             await idea.save();
-        }
-        else {
+        } else {
             idea = await Idea.create(req.body);
             idea.userId = req.user.id;
             await idea.save();
         }
-    }
-    catch (e) {
-        console.log(e)
+    } catch (e) {
+        console.log(e);
     }
 
     res.redirect('/idea2');
@@ -218,90 +226,90 @@ router.get('/idea2', (req, res) => {
     res.render('idea2');
 });
 
-
 //Edit ideas
 router.get('/edit/:id', async (req, res) => {
-    let idea = await Idea.findByPk(req.params.id)
-    res.render('edit', { idea })
+    let idea = await Idea.findByPk(req.params.id);
+    res.render('edit', { idea });
 });
 
-
 router.post('/edit/:id', async (req, res) => {
-    let { id, summary, description, initialCost, runningCost, goalYears, numberOfParticipant } = req.body;
+    let {
+        id,
+        summary,
+        description,
+        initialCost,
+        runningCost,
+        goalYears,
+        numberOfParticipant,
+    } = req.body;
     let idea;
 
     idea = await Idea.findByPk(id);
-    idea.summary = summary
-    idea.description = description
-    idea.initialCost = Number.parseInt(initialCost)
-    idea.runningCost = Number.parseInt(runningCost)
-    idea.goalYears = Number.parseInt(goalYears)
-    idea.numberOfParticipant = Number.parseInt(numberOfParticipant)
+    idea.summary = summary;
+    idea.description = description;
+    idea.initialCost = Number.parseInt(initialCost);
+    idea.runningCost = Number.parseInt(runningCost);
+    idea.goalYears = Number.parseInt(goalYears);
+    idea.numberOfParticipant = Number.parseInt(numberOfParticipant);
 
     await idea.save();
 
     res.redirect('/myaccount');
-})
+});
 
 //Delete ideas
-router.get("/delete/:id", async (req, res) => {
+router.get('/delete/:id', async (req, res) => {
     await Idea.destroy({
         where: {
-            id: req.params.id
-        }
-    })
-    res.redirect("/myaccount")
-
-})
+            id: req.params.id,
+        },
+    });
+    res.redirect('/myaccount');
+});
 
 //Analysis
 router.get('/analysis/:id', async (req, res) => {
-    let idea = await Idea.findByPk(req.params.id)
+    let idea = await Idea.findByPk(req.params.id);
     let ideaId = req.params.id;
 
     try {
         if (ideaId) {
-            let initial = idea.initialCost
+            let initial = idea.initialCost;
             console.log(initial);
-            let running = idea.runningCost
-            let totalRunning = running * 12
-            let goalMonth = idea.goalYears
-            let goalMonthEx = initial + (running * goalMonth)
-            let totalFirst = initial + running
-            let income = goalMonthEx / (goalMonth - 3)
-            let totalIncome = income * 9
-            let FirstmonthNoi = totalFirst - income
+            let running = idea.runningCost;
+            let totalRunning = running * 12;
+            let goalMonth = idea.goalYears;
+            let goalMonthEx = initial + running * goalMonth;
+            let totalFirst = initial + running;
+            let income = goalMonthEx / (goalMonth - 3);
+            let totalIncome = income * 9;
+            let FirstmonthNoi = totalFirst - income;
             /*
             for (i = 0; i < 12; i++) {
                 let MonthlyNoi = income[i] - running[i]
                 let TotalNoi = MonthlyNoi[i].reduce((prev, curr) => prev + curr)
             }
             */
-            res.render('analysis',
-                {
-                    idea,
-                    ideaId,
-                    initial, 
-                    running,
-                    totalRunning,
-                    totalFirst,
-                    totalIncome,
-                    FirstmonthNoi
-                });
+            res.render('analysis', {
+                idea,
+                ideaId,
+                initial,
+                running,
+                totalRunning,
+                totalFirst,
+                totalIncome,
+                FirstmonthNoi,
+            });
         }
+    } catch (e) {
+        console.log(e);
     }
-    catch (e) {
-        console.log(e)
-    }
-
 });
-
 
 //logout
 router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });
-
 
 module.exports = router;
