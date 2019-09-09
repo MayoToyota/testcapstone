@@ -1,4 +1,4 @@
-//login page
+//for normal user
 exports.isLoggedIn = (req, res, next) =>{
     if (req.isAuthenticated()){
         return next();

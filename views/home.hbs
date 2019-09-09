@@ -7,8 +7,8 @@
 </h2>
 <br>
 <p>
-    <a class="btn btn-outline-danger" href="/register">Create an account</a>
-    <a class="btn btn-outline-danger" href="/myaccount">Go To My Page</a>
+    <a class="btn btn-outline-danger" href="/register"><span class="button2">Create an account</span></a>
+    <a class="btn btn-outline-danger" href="/myaccount"><span class="button2">Go To My Page</span></a>
 </p>
 <br>
 <div class="card">
@@ -19,11 +19,11 @@
     <div class="card-body">
         <h5 class="card-title">Limit of Participants :{{ this.numberOfParticipant }}</h5>
         <p class="card-text">Description : <br>
-        {{ this.description }}</p>
+            {{ this.description }}</p>
         <p>
-            <a href="/join/{{ this.id }}" class="btn btn-info"> JOIN </a>
-            <a href="/detail/{{ this.id }}" class="btn btn-outline-warning">DETAILS</a>
-            <a href="/comment/{{ this.id }}" class="btn btn-outline-secondary">COMMENT</a>
+            <a href="/join/{{ this.id }}" class="btn btn-info"><span class="button3">JOIN</span></a>
+            <a href="/detail/{{ this.id }}" class="btn btn-warning"><span class="button3">DETAILS</span></a>
+            <a href="/comment/{{ this.id }}" class="btn btn-secondary"><span class="button3">COMMENT</span></a>
             <DIV style="width:64px" class="letsVote" data-id="countfile_id1" data-lock="lock_name1">
                 <p>
                     <div>
@@ -57,7 +57,7 @@
                 });
             }
         </script>
-        <button id='increment'></button>
+        <button id='increment button1'></button>
         <div id='count'> {{ counter }}</div>
         <script src='/lib/axios/axios.min.js'></script>
         <script>

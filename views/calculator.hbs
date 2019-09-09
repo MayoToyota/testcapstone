@@ -1,6 +1,10 @@
 <form method="POST" action="/calculator">
 <h2>Expense Calculator</h2>
-    <br>
+        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
+        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+    
+    <br><br>
     <table>
         <tr>
             <th>Employment</th>
@@ -83,7 +87,7 @@
             </td>
         </tr>
     </table>
-
+<br><br>
     <table>
         <tr>
             <th>Equipments</th>
@@ -168,7 +172,7 @@
             </td>
         </tr>
     </table>
-
+ <br><br>
     Total Expenses<input type="text" name="all_total">
     <button id="button">Comfirm</button>
 
@@ -210,14 +214,7 @@
 <br>
 <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="btn btn-outline-success" href="/idea">Create an Idea</a>
+            <a class="btn btn-info" href="/idea"><span class="button3">Create an Idea</span></a>
         </li>
     </ul>
-     <br>
-        <br>
-
-        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
-    
 </form>

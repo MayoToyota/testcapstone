@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
 
 //Detail page
 router.get('/detail/:id', async (req, res) => {
+    let id = req.params.id;
     let idea = await Idea.findByPk(req.params.id, {
         include: [
             {
@@ -24,7 +25,7 @@ router.get('/detail/:id', async (req, res) => {
         ],
     });
 
-    res.render('detail', { idea });
+    res.render('detail', { idea, id });
 });
 
 //Comment page
@@ -131,7 +132,10 @@ router.use(isLoggedIn);
 
 //Join page
 router.get('/join/:id', async (req, res) => {
-    res.render('join', { ideaId: req.params.id });
+    let idea = await Idea.findByPk(req.params.id);
+    let ideaId = req.params.id;
+    let summary = idea.summary;
+    res.render('join', { ideaId, summary });
 });
 
 router.post('/join/:id', async (req, res) => {
@@ -167,6 +171,13 @@ router.get('/myaccount', async (req, res) => {
             userId: req.user.id,
         },
     });
+    /*
+    let paticipants = await Participant.findAll({
+        where:{
+            ideaId: req.idea.id
+        }
+    })
+    */
     res.render('myaccount', { ideas });
 });
 
@@ -271,34 +282,93 @@ router.get('/delete/:id', async (req, res) => {
 router.get('/analysis/:id', async (req, res) => {
     let idea = await Idea.findByPk(req.params.id);
     let ideaId = req.params.id;
+    let summary = idea.summary;
 
     try {
         if (ideaId) {
             let initial = idea.initialCost;
-            console.log(initial);
             let running = idea.runningCost;
-            let totalRunning = running * 12;
+            let TRunning = running * 12;
+            let TEx = initial + TRunning;
             let goalMonth = idea.goalYears;
-            let goalMonthEx = initial + running * goalMonth;
-            let totalFirst = initial + running;
-            let income = goalMonthEx / (goalMonth - 3);
-            let totalIncome = income * 9;
-            let FirstmonthNoi = totalFirst - income;
+            let GMEx = initial + running * goalMonth;
+            let T1 = initial + running;
+            let F3Income = 0;
+            let income = GMEx / (goalMonth - 3);
+            let TIncome = income * 9;
+            let M1Noi = F3Income - T1;
+            let M23Noi = F3Income - running;
+            let MrestNoi = income - running;
+            let totalMNoi = M1Noi + (MrestNoi + MrestNoi) + MrestNoi * 9;
+            let T2Noi = M1Noi + M23Noi;
+            let T3Noi = T2Noi + M23Noi;
+            let T4Noi = T3Noi + MrestNoi;
+            let T5Noi = T4Noi + MrestNoi;
+            let T6Noi = T5Noi + MrestNoi;
+            let T7Noi = T6Noi + MrestNoi;
+            let T8Noi = T7Noi + MrestNoi;
+            let T9Noi = T8Noi + MrestNoi;
+            let T10Noi = T9Noi + MrestNoi;
+            let T11Noi = T10Noi + MrestNoi;
+            let T12Noi = T11Noi + MrestNoi;
+
+            let TNoi = [];
+            for (i = 0; i < 12; i++) {
+                let F2TNoi = M23Noi;
+            }
+
+            let TFyearNoi =
+                totalMNoi +
+                T2Noi +
+                T3Noi +
+                T4Noi +
+                T5Noi +
+                T6Noi +
+                T7Noi +
+                T8Noi +
+                T9Noi +
+                T10Noi +
+                T11Noi +
+                T12Noi;
+
             /*
+            let chart = [];
             for (i = 0; i < 12; i++) {
                 let MonthlyNoi = income[i] - running[i]
-                let TotalNoi = MonthlyNoi[i].reduce((prev, curr) => prev + curr)
+                let TotalNoi = MonthlyNoi[i].reduce((prev, curr) => prev + curr);
+                chart.push(totalNoi)
             }
-            */
+        */
             res.render('analysis', {
                 idea,
+                summary,
                 ideaId,
+                TEx,
+                goalMonth,
+                GMEx,
                 initial,
                 running,
-                totalRunning,
-                totalFirst,
-                totalIncome,
-                FirstmonthNoi,
+                F3Income,
+                income,
+                TRunning,
+                T1,
+                TIncome,
+                M1Noi,
+                M23Noi,
+                MrestNoi,
+                totalMNoi,
+                T2Noi,
+                T3Noi,
+                T4Noi,
+                T5Noi,
+                T6Noi,
+                T7Noi,
+                T8Noi,
+                T9Noi,
+                T10Noi,
+                T11Noi,
+                T12Noi,
+                TFyearNoi,
             });
         }
     } catch (e) {

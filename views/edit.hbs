@@ -1,4 +1,8 @@
 <h2>Edit your idea</h2>
+<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
+<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+
 <p>
     <form action="/edit/:id" method="POST">
         <input type='hidden' name='id' value={{ idea.id }} />
@@ -19,13 +23,5 @@
         </div>
         <br>
         <br>
-        <button class="btn btn-primary" type="submit">Submit Button</button>
-
-        <br>
-        <br>
-
-        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
-
+        <button class="btn btn-primary button1" type="submit">Submit Button</button>
     </form>

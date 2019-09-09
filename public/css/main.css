@@ -9,24 +9,24 @@
 }
 
 body {
-  font-family: 'Amatic SC', cursive;
-
-  font-family: 14px 'M PLUS Rounded 1c', sans-serif;
+  font-family: 14px 'Bradley Hand', cursive;
     padding: 50px;
+    font-size: 2em
   }
 
   a {
     font-family: 'Amatic SC', cursive;
-    font:20px;
-  }
+    }
+
+  button.button1 {
+    font-family: 'Amatic SC', cursive;
+    }
 
   h1 {
     font-family: 'Amatic SC', cursive;
     color: #364e96;
     padding: 0.3em 0;
     border-bottom: double 5px #364e96;
-
-    
   }
 
   h2 {
@@ -36,3 +36,21 @@ body {
     border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
   }
 
+  h4 {
+    font-family: 'Amatic SC', cursive;
+    padding: 0.5em;
+    font-size: 3em;
+    font-weight:bold; 
+  }
+
+.button2{
+  margin-right : 10px;
+  margin-left : 10px;
+  font-size: 2em
+}
+
+.button3{
+  margin-right : 10px;
+  margin-left : 10px;
+  font-size: 18px
+}

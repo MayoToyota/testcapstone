@@ -1,3 +1,8 @@
+<h2>Join to Idea #: {{ ideaId }} - {{ summary }}</h2>
+<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
+<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+
 <form method="POST" action="/join/{{ ideaId }}">
     <div class="form-group">
         Name: <input class="form-control" type="text" name="name" value="{{ user.name }}" />
@@ -11,13 +16,7 @@
     </div>
     <br>
     <br>
-    <button class="btn btn-dark btn-lg btn-block" type="submit">Join</button>
-     <br>
-        <br>
+    <button class="btn btn-dark btn-lg btn-block button1" type="submit">Join</button>
 
-        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
-    
 
 </form>

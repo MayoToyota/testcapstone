@@ -13,6 +13,6 @@
         "ecmaVersion": 2018
     },
     "rules": {
-        "max-lines": ["warn", 200]
+        "max-lines": ["warn", 500]
     }
 }

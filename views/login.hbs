@@ -1,4 +1,9 @@
 <h2>Log in</h2>
+<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
+<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+<br>
+<br>
 <form method="POST" action="/login">
     {{#if flashes }}
     <div class="alert alert-warning" role="alert">
@@ -6,31 +11,25 @@
     </div>
     {{/if}}
     <br>
+    If you don't have an account ⇨　<a class="btn btn-outline-danger" href="/register"><span class="button3">Create an
+            account</span></a>
+    <br>
     <br>
     <div class="form-group">
         Username: <input name="username" type="text" />
-        <br>
-        <br>
+        <br><br>
         Password: <input name="password" type="password" />
     </div>
     <br>
-
-    <button class="btn btn-outline-info" type="submit">Click to Login</button>
+    <button class="btn btn-outline-info button1" type="submit"><span class="button3">Click to Login</span></button>
     <br>
     <br>
     <a href="/loginGithub">
-        <button class="btn btn-outline-dark">
-            Login with Github
+        <button class="btn btn-outline-dark"><span class="button3">
+                Login with Github
+            </span>
             <img style="height:20px; width:20px;"
                 src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ei-sc-github.svg" />
         </button>
-        </a>
-        <br>
-        <br>
-
-        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
-    
-
+    </a>
 </form>

@@ -1,5 +1,15 @@
-<h2>Analysis - Idea # :{{ ideaId }}</h2>
+<h2>Analysis - Idea # :{{ ideaId }} -{{ summary }}</h2>
+<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
+<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
 <br>
+<h4>When the total income reach to the positive : {{ goalMonth }} month</h4>
+<h4>Initial Cost : {{ initial }} <br>
+    Monthly Running Cost : {{ running }} <br>
+    Total potential debt : {{ GMEx }}
+</h4>
+<a href="/edit/{{ ideaId }}" class="btn btn-warning"><span class="button3">EDIT</span></a>
+<br><br>
 <form action="/analysis/{{ ideaId }}" method="POST">
     <table class="table table-striped">
         <thead>
@@ -52,11 +62,11 @@
                 <td>{{ running }}</td>
                 <td>{{ running }}</td>
                 <td>{{ running }}</td>
-                <td> {{ totalRunning }} </td>
+                <td> {{ TRunning }} </td>
             </tr>
             <tr>
                 <th scope="row">Total Monthly Expense</th>
-                <td>{{ totalFirst }}</td>
+                <td>{{ T1 }}</td>
                 <td>{{ running }}</td>
                 <td>{{ running }}</td>
                 <td>{{ running }}</td>
@@ -68,13 +78,13 @@
                 <td>{{ running }}</td>
                 <td>{{ running }}</td>
                 <td>{{ running }}</td>
-                <td> {{ totalRunning }} </td>
+                <td> {{ TEx }} </td>
             </tr>
             <tr>
                 <th scope="row">Goal of Monthly Income</th>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td>{{ F3Income }}</td>
+                <td>{{ F3Income }}</td>
+                <td>{{ F3Income }}</td>
                 <td>{{ income }}</td>
                 <td>{{ income }}</td>
                 <td>{{ income }}</td>
@@ -84,48 +94,47 @@
                 <td>{{ income }}</td>
                 <td>{{ income }}</td>
                 <td>{{ income }}</td>
-                <td> {{ totalIncome }} </td>
+                <td> {{ TIncome }} </td>
             </tr>
             <tr>
                 <th scope="row">Monthly NOI</th>
-                <td>{{ FirstmonthNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td> {{ totalIncome }} </td>
+                <td>{{ M1Noi }}</td>
+                <td>{{ M23Noi }}</td>
+                <td>{{ M23Noi }}</td>
+                <td>{{ MrestNoi }}</td>
+                <td>{{ MrestNoi }}</td>
+                <td>{{ MrestNoi }}</td>
+                <td>{{ MrestNoi }}</td>
+                <td>{{ MrestNoi }}</td>
+                <td>{{ MrestNoi }}</td>
+                <td>{{ MrestNoi }}</td>
+                <td>{{ MrestNoi }}</td>
+                <td>{{ MrestNoi }}</td>
+                <td> {{ totalMNoi }} </td>
             </tr>
-             <tr>
+            <tr>
                 <th scope="row">NOI</th>
-                <td>{{ FirstmonthNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td>{{ MonthlyNoi }}</td>
-                <td> {{ totalIncome }} </td>
+                <td>{{ M1Noi }}</td>
+                <td>{{ T2Noi }}</td>
+                <td>{{ T3Noi }}</td>
+                <td>{{ T4Noi }}</td>
+                <td>{{ T5Noi }}</td>
+                <td>{{ T6Noi }}</td>
+                <td>{{ T7Noi }}</td>
+                <td>{{ T8Noi }}</td>
+                <td>{{ T9Noi }}</td>
+                <td>{{ T10Noi }}</td>
+                <td>{{ T11Noi }}</td>
+                <td>{{ T12Noi }}</td>
+                <td> {{ TFyearNoi }} </td>
             </tr>
         </tbody>
     </table>
-    
-    <br>
-    <br>
-
-    <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-    <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-    <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
-
+    <script>
+        function roundFloat(number, n) {
+            var _pow = Math.pow(10, n);
+            return Math.round(number * _pow) / _pow;
+        }
+        roundFloat(T, 4)
+    </script>
 </form>
