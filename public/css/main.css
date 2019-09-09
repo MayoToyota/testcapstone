@@ -54,3 +54,15 @@ body {
   margin-left : 10px;
   font-size: 18px
 }
+
+.button４{
+  margin-right : 10px;
+  margin-left : 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 24px
+}
+
+.minus {
+  color: red;
+}

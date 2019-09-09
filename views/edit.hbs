@@ -12,9 +12,9 @@
             Description : <textarea rows="10" cols="80" class="form-control"
                 name="description"> {{ idea.description }} </textarea>
             <br>
-            initialCost: <input class="form-control" type="text" name="initialCost" value="{{ idea.initialCost }}" />
+            initialCost: <input class="form-control" type="text" name="initialCost" value="{{ currency idea.initialCost }}" />
             <br>
-            runningCost: <input class="form-control" type="text" name="runningCost" value="{{ idea.runningCost }}" />
+            runningCost: <input class="form-control" type="text" name="runningCost" value="{{ currency idea.runningCost }}" />
             <br>
             numberOfParticipant: <input class="form-control" type="text" name="numberOfParticipant"
                 value="{{ idea.numberOfParticipant }}" />

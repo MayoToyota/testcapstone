@@ -13,11 +13,9 @@
 <br>
 <div class="card">
     {{#each ideas }}
-    <div class="card-header">
-        {{ id }} : {{ this.summary }}
-    </div>
     <div class="card-body">
-        <h5 class="card-title">Limit of Participants :{{ this.numberOfParticipant }}</h5>
+        <h5 class="card-title"> {{ id }} : {{ this.summary }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted"> Limit of Participants :{{ this.numberOfParticipant }}</h6>
         <p class="card-text">Description : <br>
             {{ this.description }}</p>
         <p>
@@ -27,38 +25,14 @@
             <DIV style="width:64px" class="letsVote" data-id="countfile_id1" data-lock="lock_name1">
                 <p>
                     <div>
-                        <img src="http://urbanqee.com/webutil/like/img/smile-face480.png"
+                        <img id="increment" src="http://urbanqee.com/webutil/like/img/smile-face480.png"
                             style="height:35px; width:35px;">
-                        <img src="http://www.manga-sozai.com/data/wp-content/uploads/2015/09/038_hukidashi.jpg"
-                            style="height:35px; width:35px;">
+
                     </div>
+                    <div id='count'> {{ counter }}</div>
                 </p>
-                <div id="countfile_id1" class="balloon_right">
-                </div>
-                <!-- いいね！カウント件数 -->
-                <div id="ex01-balloon-r" class="balloon_right" style="margin-top:6px;margin-left:6px">
-                </div>
             </DIV>
         </p>
-        <script>
-            $(function () {
-                $('.btn_vote').click(function () {
-                    $(this).toggleClass('on');
-                    var id = $(this).attr('id');
-                    $(this).hasClass('on') ? Vote(id, 'plus') : Vote(id, 'minus');
-                });
-            });
-            function Vote(id, plus) {
-                cls = $('.' + id);
-                cls_num = Number(cls.html());
-                count = plus == 'minus' ? cls_num - 1 : cls_num + 1;
-                $.get('vote.php', { 'file': id, 'count': count }, function () {
-                    cls.html(count)
-                });
-            }
-        </script>
-        <button id='increment button1'></button>
-        <div id='count'> {{ counter }}</div>
         <script src='/lib/axios/axios.min.js'></script>
         <script>
             document.getElementById('increment').addEventListener('click', updateCounter);
@@ -68,7 +42,6 @@
                 let response = await axios.get(url);
                 let counterObj = response.data;
                 document.getElementById('count').innerText = counterObj.counter;
-
             }
         </script>
     </div>

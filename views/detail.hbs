@@ -1,27 +1,43 @@
 <h2>Detail Page - Idea # :{{ id }} - {{ idea.summary }}</h2>
-        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
-    
-<form action="/deital/:id" method="POST">
-<div id={{ id }}>
-    summary : {{ idea.summary }}
-    <br>
-    description : {{ idea.description }}
-    <br>
-    InitialCost : {{ idea.initialCost }}
-    <br>
-    RunningCost : {{ idea.runningCost }}
-    <br>
-    Limit of Participants : {{ idea.numberOfParticipant }}
-    <br>
-    Goal Years : {{ idea.goalYears }}
-    <br>
-    Participants : {{ participants.name }}
-    <br>
-    Comment : <textarea rows="10" cols="80" name="Comments"></textarea>
-<br>
-    Comments : {{ Comment }}
-</div>
+<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
+<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
 
-</form>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Category</th>
+            <th scope="col"> </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Summary :</th>
+            <td>{{ idea.summary }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Description :</th>
+            <td>{{ idea.description }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Initial Cost :</th>
+            <td>{{ currency idea.initialCost }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Running Cost :</th>
+            <td>{{ currency idea.runningCost }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Limit of Participants :</th>
+            <td>{{ idea.numberOfParticipant }} people</td>
+        </tr>
+        <tr>
+            <th scope="row">Number of Month to pay off debt :</th>
+            <td>{{ idea.goalYears }}th month</td>
+        </tr>
+         <tr>
+            <th scope="row">Comment :</th>
+            <td>{{ idea.goalYears }}</td>
+        </tr>
+    </tbody>
+</table>

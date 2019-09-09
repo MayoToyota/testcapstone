@@ -23,7 +23,15 @@ app.use(express.urlencoded());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.engine('hbs', hbs({
-    extname: 'hbs'
+    extname: 'hbs',
+    helpers: {
+        currency: function(amount) {
+            return amount.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+            });
+        },
+    }
 }));
 app.use(flash());
 app.use(session({
@@ -75,6 +83,6 @@ app.use(function(err, req, res, next) {
     res.render('error');
   });
 */
-app.listen('3000', () => {
+app.listen(process.ebv.PORT || '3000', () => {
     console.log('Listening');
 });

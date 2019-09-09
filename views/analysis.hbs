@@ -2,16 +2,47 @@
 <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
 <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
 <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+<br><br>
+<div class="card" style="width: 40rem;">
+    <div class="card-body">
+        <h5 class="card-title">When the total income reach to the positive :
+            <font color="red">{{ goalMonth }}</font>
+            month</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            Initial Cost : {{ currency initial }} <br>
+            Monthly Running Cost : {{ currency running }} <br>
+            Total potential debt : {{ currency GMEx }}
+        </h6>
+    </div>
+</div>
 <br>
-<h4>When the total income reach to the positive : {{ goalMonth }} month</h4>
-<h4>Initial Cost : {{ initial }} <br>
-    Monthly Running Cost : {{ running }} <br>
-    Total potential debt : {{ GMEx }}
-</h4>
 <a href="/edit/{{ ideaId }}" class="btn btn-warning"><span class="button3">EDIT</span></a>
 <br><br>
-<form action="/analysis/{{ ideaId }}" method="POST">
-    <table class="table table-striped">
+<script type="text/javascript">
+    onload = function () {
+        var ts = document.getElementsByTagName('td'), t, cnt = ts.length, i = 0;
+        for (; i < cnt; ++i) {
+            t = ts[i];
+            if (t.style.textAlign == "right") {
+                t.innerHTML = addComma(t.innerHTML);
+            }
+        }
+    }
+    function addComma(str) {
+        n = Number(str.replace(/[^0-9.]/g, ""));
+        n = n.toFixed(2);
+        return String(n).replace(/^([+-]?\d+)(\d{3})/, "$1,$2");
+    }
+
+    jQuery(function ($) {
+        $("#table td").filter(function () {
+            return parseInt($(this).text()) < 0;
+        }).addClass("minus");
+    });
+</script>
+
+<form action="/analysis/{{ ideaId }}" method="POST" name="form_comma">
+    <table class="table table-hover table-bordered" id="table">
         <thead>
             <tr>
                 <th scope="col">Month</th>
@@ -34,107 +65,101 @@
         <tbody>
             <tr>
                 <th scope="row">Initial Cost</th>
-                <td>{{ initial }}</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td> {{ initial }} </td>
+                <td>{{ currency initial }}</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right;">0</td>
+                <td> {{ currency initial }} </td>
             </tr>
             <tr>
                 <th scope="row">Monthly Running Cost</th>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td> {{ TRunning }} </td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td> {{ currency TRunning }} </td>
             </tr>
             <tr>
                 <th scope="row">Total Monthly Expense</th>
-                <td>{{ T1 }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td>{{ running }}</td>
-                <td> {{ TEx }} </td>
+                <td>{{ currency T1 }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td>{{ currency running }}</td>
+                <td> {{ currency TEx }} </td>
             </tr>
-            <tr>
+            <tr bgcolor="#ffe4e1">
                 <th scope="row">Goal of Monthly Income</th>
-                <td>{{ F3Income }}</td>
-                <td>{{ F3Income }}</td>
-                <td>{{ F3Income }}</td>
-                <td>{{ income }}</td>
-                <td>{{ income }}</td>
-                <td>{{ income }}</td>
-                <td>{{ income }}</td>
-                <td>{{ income }}</td>
-                <td>{{ income }}</td>
-                <td>{{ income }}</td>
-                <td>{{ income }}</td>
-                <td>{{ income }}</td>
-                <td> {{ TIncome }} </td>
+                <td>{{ currency F3Income }}</td>
+                <td>{{ currency F3Income }}</td>
+                <td>{{ currency F3Income }}</td>
+                <td>{{ currency income }}</td>
+                <td>{{ currency income }}</td>
+                <td>{{ currency income }}</td>
+                <td>{{ currency income }}</td>
+                <td>{{ currency income }}</td>
+                <td>{{ currency income }}</td>
+                <td>{{ currency income }}</td>
+                <td>{{ currency income }}</td>
+                <td>{{ currency income }}</td>
+                <td> {{ currency TIncome }} </td>
             </tr>
             <tr>
                 <th scope="row">Monthly NOI</th>
-                <td>{{ M1Noi }}</td>
-                <td>{{ M23Noi }}</td>
-                <td>{{ M23Noi }}</td>
-                <td>{{ MrestNoi }}</td>
-                <td>{{ MrestNoi }}</td>
-                <td>{{ MrestNoi }}</td>
-                <td>{{ MrestNoi }}</td>
-                <td>{{ MrestNoi }}</td>
-                <td>{{ MrestNoi }}</td>
-                <td>{{ MrestNoi }}</td>
-                <td>{{ MrestNoi }}</td>
-                <td>{{ MrestNoi }}</td>
-                <td> {{ totalMNoi }} </td>
+                <td>{{ currency M1Noi }}</td>
+                <td>{{ currency M23Noi }}</td>
+                <td>{{ currency M23Noi }}</td>
+                <td>{{ currency MrestNoi }}</td>
+                <td>{{ currency MrestNoi }}</td>
+                <td>{{ currency MrestNoi }}</td>
+                <td>{{ currency MrestNoi }}</td>
+                <td>{{ currency MrestNoi }}</td>
+                <td>{{ currency MrestNoi }}</td>
+                <td>{{ currency MrestNoi }}</td>
+                <td>{{ currency MrestNoi }}</td>
+                <td>{{ currency MrestNoi }}</td>
+                <td> {{ currency totalMNoi }} </td>
             </tr>
             <tr>
                 <th scope="row">NOI</th>
-                <td>{{ M1Noi }}</td>
-                <td>{{ T2Noi }}</td>
-                <td>{{ T3Noi }}</td>
-                <td>{{ T4Noi }}</td>
-                <td>{{ T5Noi }}</td>
-                <td>{{ T6Noi }}</td>
-                <td>{{ T7Noi }}</td>
-                <td>{{ T8Noi }}</td>
-                <td>{{ T9Noi }}</td>
-                <td>{{ T10Noi }}</td>
-                <td>{{ T11Noi }}</td>
-                <td>{{ T12Noi }}</td>
-                <td> {{ TFyearNoi }} </td>
+                <td>{{ currency M1Noi }}</td>
+                <td>{{ currency T2Noi }}</td>
+                <td>{{ currency T3Noi }}</td>
+                <td>{{ currency T4Noi }}</td>
+                <td>{{ currency T5Noi }}</td>
+                <td>{{ currency T6Noi }}</td>
+                <td>{{ currency T7Noi }}</td>
+                <td>{{ currency T8Noi }}</td>
+                <td>{{ currency T9Noi }}</td>
+                <td>{{ currency T10Noi }}</td>
+                <td>{{ currency T11Noi }}</td>
+                <td>{{ currency T12Noi }}</td>
+                <td> {{ currency TFyearNoi }} </td>
+
             </tr>
         </tbody>
     </table>
-    <script>
-        function roundFloat(number, n) {
-            var _pow = Math.pow(10, n);
-            return Math.round(number * _pow) / _pow;
-        }
-        roundFloat(T, 4)
-    </script>
 </form>

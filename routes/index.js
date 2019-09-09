@@ -51,10 +51,7 @@ router.post('/comment/:id', async (req, res) => {
 });
 
 //Counter
-router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Counter', counter });
-});
-
+let counter = 0;
 router.get('/api/increment', (req, res) => {
     counter++;
     res.json({ counter });
