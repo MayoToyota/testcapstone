@@ -1,40 +1,22 @@
-<a class="text-monospace" href="http://localhost:3000/comment/:id"></a>
-<br>
-<form method="POST" action="/idea">
-    <div class="form-group">
-        Summary: <input class="form-control" name="summary" type="text" />
-        <br>
-        Description: <textarea rows="10" cols="80" class="form-control" name="description"></textarea>
-        <br>
-        initialCost: <input class="form-control" name="initialCost" type="text" />
-        <br>
-        runningCost: <input class="form-control" name="runningCost" type="number" />
-        <br>
-        goalYears: <input class="form-control" name="goalYears" type="number" />
-        <br>
-        Limit of Participants: <input class="form-control" name="numberOfParticipant" type="text" />
-    </div>
+<h2>Comments for Idea #: {{ id }} - {{ idea.summary }}</h2>
+<div class="card-body">
+    <h5 class="card-title">Summary : {{ idea.summary }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+        Description : {{ idea.description }}
+        Initial Cost : {{ currency initial }} <br>
+        Monthly Running Cost : {{ currency running }} <br>
+        Limit of Participants : {{ idea.numberOfParticipant }} people <br>
+        Number of Month to pay off debt : {{ idea.goalYears }}th month
+        Comment :
+    </h6>
 
-    <button class="btn btn-info btn-lg btn-block button1" type="submit">Submit</button>
-    <br>
-    <p class="text-monospace">
-        Attention: Please read carefuly before submit your bussiness model
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="btn btn-outline-success" href="/howto">How to</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="btn btn-outline-success" href="/myaccount">Go To My Page</a>
-            </li>
-        </ul>
-    </p>
- <br>
-        <br>
+    New Comment :
 
-        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
-    
+</div>
+
+
+<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
+<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+
 </form>

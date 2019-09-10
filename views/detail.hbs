@@ -3,7 +3,7 @@
 <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
 <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
 
-<table class="table table-hover">
+<table class="table table-hover" hspace="20" vspace="20">
     <thead>
         <tr>
             <th scope="col">Category</th>
@@ -15,27 +15,36 @@
             <th scope="row">Summary :</th>
             <td>{{ idea.summary }}</td>
         </tr>
+       
         <tr>
             <th scope="row">Description :</th>
             <td>{{ idea.description }}</td>
         </tr>
+        
         <tr>
             <th scope="row">Initial Cost :</th>
             <td>{{ currency idea.initialCost }}</td>
         </tr>
+       
         <tr>
             <th scope="row">Running Cost :</th>
             <td>{{ currency idea.runningCost }}</td>
         </tr>
+       
         <tr>
             <th scope="row">Limit of Participants :</th>
             <td>{{ idea.numberOfParticipant }} people</td>
         </tr>
+       
         <tr>
             <th scope="row">Number of Month to pay off debt :</th>
             <td>{{ idea.goalYears }}th month</td>
         </tr>
-         <tr>
+        <tr>
+            <th scope="row"></th>
+            <td></td>
+        </tr>
+        <tr>
             <th scope="row">Comment :</th>
             <td>{{ idea.goalYears }}</td>
         </tr>

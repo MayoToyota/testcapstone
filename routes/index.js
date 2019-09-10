@@ -30,6 +30,7 @@ router.get('/detail/:id', async (req, res) => {
 
 //Comment page
 router.get('/comment/:id', async (req, res) => {
+    let ideaId = req.params.id;
     let idea = await Idea.findByPk(req.params.id, {
         include: [
             {
@@ -38,16 +39,27 @@ router.get('/comment/:id', async (req, res) => {
             },
         ],
     });
-
-    res.render('detail', { idea });
+    res.render('comment', { idea, ideaId });
 });
 
 router.post('/comment/:id', async (req, res) => {
-    let { id } = req.params;
-    await Idea.upsert(req.body);
+    let { id, comment } = req.body;
+    let ideaId = req.params.id;
+    try {
+        if (id) {
+            comment = await Comment.findByPk(id);
+            comment.comment = comment;
+            await participant.save();
+        } else {
+            comment = await Comment.create(req.body);
+            comment.ideaId = ideaId;
+            await comment.save();
+        }
+    } catch (e) {
+        console.log(e);
+    }
 
-    let reflect = `/comment/${id}`;
-    res.redirect(reflect);
+    res.redirect('/detail');
 });
 
 //Counter

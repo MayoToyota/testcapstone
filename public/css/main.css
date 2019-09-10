@@ -1,68 +1,68 @@
-#ideas-list {
-    border: 2px solid black
+body {
+  font-family: 'Times New Roman', Times, serif;
+  padding: 50px;
+  font-size: 2em;
 }
 
-.line{
+#ideas-list {
+    border: 2px solid black;
+}
+
+.line {
     height: 4px;
     width: 100%;
     background-color: black;
 }
 
-body {
-  font-family: 14px 'Bradley Hand', cursive;
-    padding: 50px;
-    font-size: 2em
-  }
-
-  a {
+a {
     font-family: 'Amatic SC', cursive;
-    }
+}
 
-  button.button1 {
+button.button1 {
     font-family: 'Amatic SC', cursive;
-    }
+}
 
-  h1 {
+h1 {
     font-family: 'Amatic SC', cursive;
     color: #364e96;
     padding: 0.3em 0;
     border-bottom: double 5px #364e96;
-  }
+}
 
-  h2 {
+h2 {
     font-family: 'Amatic SC', cursive;
     padding: 0.5em;
     border: 3px solid #ccc;
-    border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
-  }
+    border-radius: 3em 0.7em 2em 0.7em/.7em 2em 0.7em 3em;
+}
 
-  h4 {
+h4 {
     font-family: 'Amatic SC', cursive;
     padding: 0.5em;
     font-size: 3em;
-    font-weight:bold; 
-  }
-
-.button2{
-  margin-right : 10px;
-  margin-left : 10px;
-  font-size: 2em
+    font-weight: bold;
 }
 
-.button3{
-  margin-right : 10px;
-  margin-left : 10px;
-  font-size: 18px
+.button2 {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 2em;
 }
 
-.button４{
-  margin-right : 10px;
-  margin-left : 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 24px
+.button3 {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.button４ {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 
 .minus {
-  color: red;
+    color: red;
 }
