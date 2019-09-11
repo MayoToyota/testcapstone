@@ -1,22 +1,26 @@
-<h2>Join to Idea #: {{ ideaId }} - {{ summary }}</h2>
-<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+<div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
+    <div class="content1">
+        <h2>Join to Idea # {{ ideaId }} - {{ summary }}</h2>
+        <a class="btn btn-light" onclick="history.back()">Back</a>
+        <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+        <br>
+        <form method="POST" action="/join/{{ ideaId }}">
+            <div class="form-group">
+                Name: <input class="form-control" type="text" name="name" value="{{ user.name }}" />
+                <br>
+                Email: <input class="form-control" type="text" name="email" />
+                <br>
+                Position: <input class="form-control" type="text" name="position" />
+                <br>
+                Reason: <textarea rows="10" cols="80" class="form-control" name="reason"></textarea>
+                <br>
+            </div>
+            <br>
+            <br>
+            <button class="btn btn-dark btn-lg btn-block button1" type="submit">Join</button>
 
-<form method="POST" action="/join/{{ ideaId }}">
-    <div class="form-group">
-        Name: <input class="form-control" type="text" name="name" value="{{ user.name }}" />
-        <br>
-        Email: <input class="form-control" type="text" name="email" />
-        <br>
-        Position: <input class="form-control" type="text" name="position" />
-        <br>
-        Reason: <textarea rows="10" cols="80" class="form-control" name="reason"></textarea>
-        <br>
+
+        </form>
     </div>
-    <br>
-    <br>
-    <button class="btn btn-dark btn-lg btn-block button1" type="submit">Join</button>
-
-
-</form>
+</div>

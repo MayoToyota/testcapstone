@@ -1,17 +1,21 @@
-<h2>Create your account</h2>
-<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+<div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
+    <div class="content1">
+        <h2>Create your account</h2>
+        <a class="btn btn-light" onclick="history.back()">Back</a>
+        <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
 
-<form method="POST" action="/register">
-    <br>
-    <br>
-    <div class="form-group">
-        Username: <input name="username" type="text" />
-        <br><br>
-        Password: <input name="password" type="password" />
+        <form method="POST" action="/register">
+            <br>
+            <br>
+            <div class="form-group">
+                Username: <input name="username" type="text" />
+                <br><br>
+                Password: <input name="password" type="password" />
+            </div>
+            <br>
+            <button class="btn btn-success button1" type="submit"><span class="button3">Register</span></button>
+
+        </form>
     </div>
-    <br>
-    <button class="btn btn-success button1" type="submit"><span class="button3">Register</span></button>
-
-</form>
+</div>

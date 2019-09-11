@@ -1,22 +1,31 @@
-<h2>Comments for Idea #: {{ id }} - {{ idea.summary }}</h2>
-<div class="card-body">
-    <h5 class="card-title">Summary : {{ idea.summary }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">
-        Description : {{ idea.description }}
-        Initial Cost : {{ currency initial }} <br>
-        Monthly Running Cost : {{ currency running }} <br>
-        Limit of Participants : {{ idea.numberOfParticipant }} people <br>
-        Number of Month to pay off debt : {{ idea.goalYears }}th month
-        Comment :
-    </h6>
+<div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
+    <div class="content1">
 
-    New Comment :
+        <h2>Comments</h2>
+        <a class="btn btn-light" onclick="history.back()">Back</a>
+        <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
 
+        <br><br><br><br>
+        <div class="wrapper">
+            <p class="box1">
+                <font size="6">#{{ id }} - {{ idea.summary }}</font> <br>
+                <font size="5" color="gray"> Limit of Participants :{{ idea.numberOfParticipant }} people</font> <br>
+                Description : <br>
+                　　<font color="#808000">{{ idea.description }}</font><br>
+                <br>
+                Initial Cost : <font color="#808000">{{ currency idea.initialCost}}</font> <br>
+                Monthly Running Cost : <font color="#808000">{{ currency idea.runningCost }} </font><br>
+                Number of Month to pay off debt : <font color="#808000">{{ idea.goalYears }}th month</font><br>
+
+                Participants: <font color="#808000">{{ idea.participants }} </font><br>
+                Comments: <font color="#808000">{{ idea.comments }} </font><br>
+
+                <br>
+                New Comment: <textarea rows="10" cols="80" class="form-control" name="newComment"></textarea>
+                <br>
+                <button class="btn btn-secondary button1" type="submit">Submit</button>
+            </p>
+        </div>
+    </div>
 </div>
-
-
-<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
-
-</form>

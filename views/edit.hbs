@@ -1,29 +1,34 @@
-<h2>Edit your idea</h2>
-<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+<div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
+    <div class="content1">
 
-<p>
-    <form action="/edit/:id" method="POST">
-        <input type='hidden' name='id' value={{ idea.id }} />
-        <div class="form-group">
-            summary: <input class="form-control" type="text" name="summary" value="{{ idea.summary }}" />
+        <h2>Edit your idea</h2>
+        <a class="btn btn-light" onclick="history.back()">Back</a>
+        <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+        <br><br>
+        <form action="/edit/:id" method="POST">
+            <input type='hidden' name='id' value={{ idea.id }} />
+            <div class="form-group">
+                Summary: <input class="form-control" type="text" name="summary" value="{{ idea.summary }}" />
+                <br>
+                Description : <textarea rows="10" cols="80" class="form-control"
+                    name="description"> {{ idea.description }} </textarea>
+                <br>
+                Initial Cost: <input class="form-control" type="text" name="initialCost"
+                    value="{{ idea.initialCost }}" />
+                <br>
+                Monthly Running Cost: <input class="form-control" type="text" name="runningCost"
+                    value="{{ idea.runningCost }}" />
+                <br>
+                Limit Of Participants: <input class="form-control" type="text" name="numberOfParticipant"
+                    value="{{ idea.numberOfParticipant }}" />
+                <br>
+                Number of Month to pay off debt: <input class="form-control" type="text" name="goalYears"
+                    value="{{ idea.goalYears }}" />
+            </div>
             <br>
-            Description : <textarea rows="10" cols="80" class="form-control"
-                name="description"> {{ idea.description }} </textarea>
             <br>
-            initialCost: <input class="form-control" type="text" name="initialCost"
-                value="{{ currency idea.initialCost }}" />
-            <br>
-            runningCost: <input class="form-control" type="text" name="runningCost"
-                value="{{ currency idea.runningCost }}" />
-            <br>
-            numberOfParticipant: <input class="form-control" type="text" name="numberOfParticipant"
-                value="{{ idea.numberOfParticipant }}" />
-            <br>
-            goalYears: <input class="form-control" type="text" name="goalYears" value="{{ idea.goalYears }}" />
-        </div>
-        <br>
-        <br>
-        <button class="btn btn-primary button1" type="submit">Submit Button</button>
-    </form>
+            <button class="btn btn-primary button1" type="submit">Submit Button</button>
+        </form>
+    </div>
+</div>

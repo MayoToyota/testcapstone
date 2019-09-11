@@ -20,12 +20,14 @@ router.get('/detail/:id', async (req, res) => {
         include: [
             {
                 model: Participant,
+            },
+            {
                 model: Comment,
             },
         ],
     });
-
     res.render('detail', { idea, id });
+    console.log(idea);
 });
 
 //Comment page
@@ -34,7 +36,6 @@ router.get('/comment/:id', async (req, res) => {
     let idea = await Idea.findByPk(req.params.id, {
         include: [
             {
-                model: Participant,
                 model: Comment,
             },
         ],
@@ -179,14 +180,16 @@ router.get('/myaccount', async (req, res) => {
         where: {
             userId: req.user.id,
         },
+        include: [
+            {
+                model: Participant,
+            },
+            {
+                model: Comment,
+            },
+        ],
     });
-    /*
-    let paticipants = await Participant.findAll({
-        where:{
-            ideaId: req.idea.id
-        }
-    })
-    */
+
     res.render('myaccount', { ideas });
 });
 
@@ -202,7 +205,7 @@ router.post('/calculator', async (req, res) => {
     res.redirect('/calculator', { totalAmount });
 });
 
-// Creating an idea
+//Creating an idea
 router.get('/idea', (req, res) => {
     res.render('idea');
 });

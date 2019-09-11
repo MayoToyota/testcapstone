@@ -1,57 +1,43 @@
-<h2>Create your idea</h2>
-<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+<div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
+    <div class="content1">
 
-<a class="text-monospace" href="http://localhost:3000/idea"></a>
-<br>
-<h5></h5>
-Create your business from here.
-Before create your bussiness model, pelase read this carefully ⇒ <a href="/howto">How to start own bussiness within
-    company</a>
-<br>
-<br>
-If you don't know how much costs for your bussiness, here is a calcuator ⇒ <a href="/calculator">Easy to calculate your
-    initial/running cost</a>
-<br>
-<br>
-<form method="POST" action="/idea">
-    <div class="form-group">
-        Summary: <input class="form-control" name="summary" type="text" />
+        <h2>Create your idea</h2>
+        <a class="btn btn-light" onclick="history.back()">Back</a>
+        <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+
+        <a class="text-monospace" href="http://localhost:3000/idea"></a>
         <br>
-        Description: <textarea rows="10" cols="80" class="form-control" name="description"></textarea>
-        <br>
-        If you don't know how much costs for your bussiness, here is a calcuator ⇒ <a href="/calculator">Easy to
-            calculate your
-            initial/running cost</a>
+        <h5></h5>
+        Create your business from here.
+        Before create your bussiness model, pelase read this carefully ⇒ <a href="/howto"
+            class="btn btn-outline-primary"><span class="button3">How to start own bussiness within
+                company</span></a>
         <br>
         <br>
-        Initial Cost: <input class="form-control" name="initialCost" type="number" />
-        <br>
-        Running Cost: <input class="form-control" name="runningCost" type="number" />
-        <br>
-        Months for goal: *Put month to reach to pay off debt <input class="form-control" name="goalYears"
-            type="number" />
-        <br>
-        Limit of Participants: <input class="form-control" name="numberOfParticipant" type="text" />
+        <form method="POST" action="/idea">
+            <div class="form-group">
+                Summary: <input class="form-control" name="summary" type="text" />
+                <br>
+                Description: <textarea rows="10" cols="80" class="form-control" name="description"></textarea>
+                <br>
+                If you don't know how much costs for your bussiness, here is a calcuator ⇒ <a href="/calculator"
+                    class="btn btn-outline-primary"><span class="button3">Easy to calculate your
+                        initial/running cost</span></a>
+                <br>
+                <br>
+                Initial Cost: <input class="form-control" name="initialCost" type="number" />
+                <br>
+                Monthly Running Cost: <input class="form-control" name="runningCost" type="number" />
+                <br>
+                Number of Month to pay off debt <input class="form-control" name="goalYears" type="number" />
+                <br>
+                Limit of Participants: <input class="form-control" name="numberOfParticipant" type="text" />
+            </div>
+            <br>
+
+            <button class="btn btn-info btn-lg btn-block button1" type="submit">Submit</button>
+            <br>
+        </form>
     </div>
-    <br>
-
-    <button class="btn btn-info btn-lg btn-block button1" type="submit">Submit</button>
-    <br>
-    <p class="text-monospace">
-        Attention: Please read carefully before submit your bussiness model
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="btn btn-outline-success" href="/howto">How to</a>
-            </li>
-        </ul>
-        <br>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="btn btn-outline-success" href="/myaccount">Go To My Page</a>
-            </li>
-        </ul>
-    </p>
-
-</form>
+</div>

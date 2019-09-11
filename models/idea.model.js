@@ -1,6 +1,5 @@
-module.exports = (db) => {
-
-    const Idea = db.sequelize.define("idea", {
+module.exports = db => {
+    const Idea = db.sequelize.define('idea', {
         id: {
             type: db.Sequelize.INTEGER,
             primaryKey: true,
@@ -23,7 +22,7 @@ module.exports = (db) => {
         },
         goalYears: {
             type: db.Sequelize.INTEGER,
-        }
+        },
     });
 
     return Idea;

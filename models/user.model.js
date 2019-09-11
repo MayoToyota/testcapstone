@@ -1,8 +1,7 @@
-const passportLocalSequelize = require("../node_modules/passport-local-sequelize/lib/passport-local-sequelize")
+const passportLocalSequelize = require('../node_modules/passport-local-sequelize/lib/passport-local-sequelize');
 
-module.exports = (db) => {
-
-    const User = db.sequelize.define("user", {
+module.exports = db => {
+    const User = db.sequelize.define('user', {
         id: {
             type: db.Sequelize.INTEGER,
             primaryKey: true,
@@ -11,19 +10,19 @@ module.exports = (db) => {
         username: {
             type: db.Sequelize.STRING,
         },
-        myhash:{
+        myhash: {
             type: db.Sequelize.TEXT,
         },
-        mysalt:{
+        mysalt: {
             type: db.Sequelize.TEXT,
-        }
+        },
     });
 
-   passportLocalSequelize.attachToUser(User,{
-       usernameField:"username",
-       hashField: "myhash",
-       saltField: "mysalt"
-   });
+    passportLocalSequelize.attachToUser(User, {
+        usernameField: 'username',
+        hashField: 'myhash',
+        saltField: 'mysalt',
+    });
 
     return User;
- };
+};

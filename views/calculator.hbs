@@ -1,220 +1,245 @@
-<form method="POST" action="/calculator">
-<h2>Expense Calculator</h2>
-        <a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-        <a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-        <a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
-    
-    <br><br>
-    <table>
-        <tr>
-            <th>Employment</th>
-            <th>Cost</th>
-            <th>Type</th>
-            <th>Total</th>
-        </tr>
-        <br>
-        <tr>
-            <td>
-                <select>
-                    <option>Manager</option>
-                    <option>Employee</option>
-                </select>
-            </td>
-            <td>
-                <input type="text" class="price">
-            </td>
-            <td>
-                <select class="employment">
-                    <option value="0"></option>
-                    <option value="2080">Full time</option>
-                    <option value="1040">Part time</option>
-                </select>
-            </td>
-            <td>
-                <input type="text" class="total">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <select>
-                    <option>Manager</option>
-                    <option>Employee</option>
-                </select>
-            </td>
-            <td>
-                <input type="text" class="price">
-            </td>
-            <td>
-                <select class="employment">
-                    <option value="0"></option>
-                    <option value="2080">Full time</option>
-                    <option value="1040">Part time</option>
+<div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
+    <div class="content1">
+        <h2>Expense Calculator</h2>
+        <a class="btn btn-light" onclick="history.back()">Back</a>
+        <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
 
-                </select>
-            </td>
-            <td>
-                <input type="text" class="total">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <select>
-                    <option>Manager</option>
-                    <option>Employee</option>
-                    ¥
-                </select>
-            </td>
-            <td>
-                <input type="text" class="price">
-            </td>
-            <td>
-                <select class="employment">
-                    <option value="0"></option>
-                    <option value="2080">Full time</option>
-                    <option value="1040">Part time</option>
-
-                </select>
-            </td>
-            <td>
-                <input type="text" class="total">
-            </td>
-        </tr>
-        <tr>
-            <td align="right" colspan="3"><strong>Total</strong>
-            </td>
-            <td>
-                <input type="text" class="field_total">
-            </td>
-        </tr>
-    </table>
-<br><br>
-    <table>
-        <tr>
-            <th>Equipments</th>
-            <th>Cost</th>
-            <th>Count</th>
-            <th>Total</th>
-        </tr>
-        <tr>
-            <td>
-                <select>
-                    <option>Laptop</option>
-                    <option>Phone</option>
-                    <option>Room</option>
-                </select>
-            </td>
-            <td>
-                <input type="text" class="price">
-            </td>
-            <td>
-                <select class="count">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-            </td>
-            <td>
-                <input type="text" class="total">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <select>
-                    <option>Laptop</option>
-                    <option>Phone</option>
-                    <option>Rent</option>
-                </select>
-            </td>
-            <td>
-                <input type="text" class="price">
-            </td>
-            <td>
-                <select class="count">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-            </td>
-            <td>
-                <input type="text" class="total">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <select>
-                    <option>Laptop</option>
-                    <option>Phone</option>
-                    <option>Rent</option>
-                </select>
-            </td>
-            <td>
-                <input type="text" class="price">
-            </td>
-            <td>
-                <select class="count">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-            </td>
-            <td>
-                <input type="text" class="total">
-            </td>
-        </tr>
-        <tr>
-            <td align="right" colspan="3"><strong>Total</strong>
-            </td>
-            <td>
-                <input type="text" class="field_total">
-            </td>
-        </tr>
-    </table>
- <br><br>
-    Total Expenses<input type="text" name="all_total">
-    <button id="button">Comfirm</button>
-
-    <script>
-        document.addEventListener('change', function (e) {
-            let price = document.querySelectorAll('.price');
-            let total = document.querySelectorAll('.total');
-            let employment = document.querySelectorAll('.employment');
-            let count = document.querySelectorAll('.count');
-            let field_total = document.querySelectorAll('.field_total');
-            let all_total = document.querySelector('input[name=all_total]');
-
-            //1st initial total
-            let index0 = 0;
-
-            //2nd initial total
-            let index1 = 0;
-
-            //initial value
-            let ini_val = 0;
-
-            for (let i = 0; i < 3; i++) {
-                index0 += (ini_val = parseInt(price[i].value || 0) * parseInt(employment[i].value || 0));
-                total[i].value = price[i].value == "" ? "" : ini_val;
-                index1 += (ini_val = parseInt(price[i + 3].value || 0) * parseInt(count[i].value || 0));
-                total[i + 3].value = price[i + 3].value == "" ? "" : ini_val;
+        <br><br>
+        <script type="text/javascript">
+            onload = function () {
+                var ts = document.getElementsByTagName('td'), t, cnt = ts.length, i = 0;
+                for (; i < cnt; ++i) {
+                    t = ts[i];
+                    if (t.style.textAlign == "right") {
+                        t.innerHTML = addComma(t.innerHTML);
+                    }
+                }
             }
-            field_total[0].value = index0;
-            field_total[1].value = index1;
+            function addComma(str) {
+                n = Number(str.replace(/[^0-9.]/g, ""));
+                n = n.toFixed(2);
+                return String(n).replace(/^([+-]?\d+)(\d{3})/, "$1,$2");
+            }
 
-            let button = document.getElementById('button');
-            button.addEventListener("click", function (e) {
-                e.preventDefault();
-                all_total.value = index0 + index1;
+            jQuery(function ($) {
+                $("#table td").filter(function () {
+                    return parseInt($(this).text()) < 0;
+                }).addClass("minus");
             });
-        });
-    </script>
-<br>
-<br>
-<ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="btn btn-info" href="/idea"><span class="button3">Create an Idea</span></a>
-        </li>
-    </ul>
-</form>
+        </script>
+        <table style="text-align:right;">
+            <tr>
+                <th>Employment</th>
+                <th>Hourly ($)</th>
+                <th></th>
+                <th>Monthly Income</th>
+            </tr>
+            <br>
+            <tr>
+                <td>
+                    <select>
+                        <option>Manager</option>
+                        <option>Employee</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="price">
+                </td>
+                <td>
+                    <select class="employment">
+                        <option value="0"></option>
+                        <option value="173">Full time</option>
+                        <option value="87">Part time</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="total">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select>
+                        <option>Manager</option>
+                        <option>Employee</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="price">
+                </td>
+                <td>
+                    <select class="employment">
+                        <option value="0"></option>
+                        <option value="173">Full time</option>
+                        <option value="87">Part time</option>
+
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="total">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select>
+                        <option>Manager</option>
+                        <option>Employee</option>
+                        ¥
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="price">
+                </td>
+                <td>
+                    <select class="employment">
+                        <option value="0"></option>
+                        <option value="173">Full time</option>
+                        <option value="87">Part time</option>
+
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="total">
+                </td>
+            </tr>
+            <tr>
+                <td align="right" colspan="3"><strong>Total</strong>
+                </td>
+                <td>
+                    <input type="text" class="field_total">
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <table style="text-align:right;">
+            <tr>
+                <th>Equipments</th>
+                <th>Price ($)</th>
+                <th></th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>
+                    <select>
+                        <option>Laptop</option>
+                        <option>Phone</option>
+                        <option>Room</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="price">
+                </td>
+                <td>
+                    <select class="count1">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="total">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select>
+                        <option>Laptop</option>
+                        <option>Phone</option>
+                        <option>Rent</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="price">
+                </td>
+                <td>
+                    <select class="count1">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="total">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select>
+                        <option>Laptop</option>
+                        <option>Phone</option>
+                        <option>Rent</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="price">
+                </td>
+                <td>
+                    <select class="count1">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="total">
+                </td>
+            </tr>
+            <tr>
+                <td align="right" colspan="3"><strong>Total</strong>
+                </td>
+                <td>
+                    <input type="text" class="field_total">
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <font size="4" color="red">Total Expenses </font><input type="text" name="all_total">
+        <button id="button">Comfirm</button>
+
+        <script>
+            document.addEventListener('change', function (e) {
+                let price = document.querySelectorAll('.price');
+                let total = document.querySelectorAll('.total');
+                let employment = document.querySelectorAll('.employment');
+                let count1 = document.querySelectorAll('.count1');
+                let field_total = document.querySelectorAll('.field_total');
+                let all_total = document.querySelector('input[name=all_total]');
+
+                //1st initial total
+                let index0 = 0;
+
+                //2nd initial total
+                let index1 = 0;
+
+                //initial value
+                let ini_val = 0;
+
+                for (let i = 0; i < 3; i++) {
+                    index0 += (ini_val = parseInt(price[i].value || 0) * parseInt(employment[i].value || 0));
+                    total[i].value = price[i].value == "" ? "" : ini_val;
+                    index1 += (ini_val = parseInt(price[i + 3].value || 0) * parseInt(count1[i].value || 0));
+                    total[i + 3].value = price[i + 3].value == "" ? "" : ini_val;
+                }
+                field_total[0].value = index0;
+                field_total[1].value = index1;
+
+                let button = document.getElementById('button');
+                button.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    all_total.value = index0 + index1;
+                });
+            });
+        </script>
+        <br>
+        <br>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="btn btn-info" href="/idea"><span class="button3">Create an Idea</span></a>
+            </li>
+        </ul>
+        </form>
+    </div>
+</div>

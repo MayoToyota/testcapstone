@@ -5,34 +5,29 @@
     Embracing intrapreneurship is a decision to let the most entrepreneurial people in the company take risk and
     use innovative potential to add value to our business.
 </h2>
-<br>
-<p>
-    <a class="btn btn-outline-danger" href="/register"><span class="button2">Create an account</span></a>
-    <a class="btn btn-outline-danger" href="/myaccount"><span class="button2">Go To My Page</span></a>
-</p>
-<br>
-<div class="card">
-    {{#each ideas }}
-    <div class="card-body">
-        <h5 class="card-title"> {{ id }} : {{ this.summary }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted"> Limit of Participants :{{ this.numberOfParticipant }}</h6>
-        <p class="card-text">Description : <br>
-            {{ this.description }}</p>
-        <p>
-            <a href="/join/{{ this.id }}" class="btn btn-info"><span class="button3">JOIN</span></a>
-            <a href="/detail/{{ this.id }}" class="btn btn-warning"><span class="button3">DETAILS</span></a>
-            <a href="/comment/{{ this.id }}" class="btn btn-secondary"><span class="button3">COMMENT</span></a>
-            <DIV style="width:64px" class="letsVote" data-id="countfile_id1" data-lock="lock_name1">
-                <p>
-                    <div>
-                        <img id="increment" src="http://urbanqee.com/webutil/like/img/smile-face480.png"
-                            style="height:35px; width:35px;">
+<div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
+    <br>
+    <div class="content1">
+        <div>
+            <a class="btn btn-outline-danger" href="/register"><span class="button2">Create an account</span></a>
+            <a class="btn btn-outline-danger" href="/myaccount"><span class="button2">Go To My Page</span></a>
+        </div>
+        <br>
+        <div class="wrapper">
+            {{#each ideas }}
+            <p class="box1">
+                <font size="6"># {{ id }} - {{ this.summary }}</font> <br>
+                <font size="6" color="gray"> Limit of Participants :{{ this.numberOfParticipant }} </font> <br>
+                <font size="6"> Description : </font><br>
+                <font size="6" color="#808000">{{ this.description }} </font><br>
+                <br>
+                <a href="/join/{{ this.id }}" class="btn btn-info"><span class="button3">JOIN</span></a>
+                <a href="/detail/{{ this.id }}" class="btn btn-warning"><span class="button3">DETAILS</span></a>
+                <a href="/comment/{{ this.id }}" class="btn btn-secondary"><span class="button3">COMMENT</span></a>
+                <img id="increment" src="http://urbanqee.com/webutil/like/img/smile-face480.png"
+                    style="height:35px; width:35px;">
+                <a id='count'> {{ counter }}</div>
 
-                    </div>
-                    <div id='count'> {{ counter }}</div>
-                </p>
-            </DIV>
-        </p>
         <script src='/lib/axios/axios.min.js'></script>
         <script>
             document.getElementById('increment').addEventListener('click', updateCounter);
@@ -44,9 +39,8 @@
                 document.getElementById('count').innerText = counterObj.counter;
             }
         </script>
+        {{/each}}
+        </p>
     </div>
-    {{/each}}
 </div>
-
-<br>
-<br>
+</div>

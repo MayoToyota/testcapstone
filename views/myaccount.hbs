@@ -1,88 +1,71 @@
-<h2>My account</h2>
-<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+<div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
+    <div class="content1">
+        <h2>My account</h2>
+        <a class="btn btn-light" onclick="history.back()">Back</a>
+        <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
 
-<a class="text-monospace" href="http://localhost:3000/myaccount/"></a>
-<br><br>
-<ul class="navbar-nav">
-    <li class="nav-item">
-        <a class="btn btn-info" href="/idea"><span class="button2">Create an Idea</span></a>
-    </li>
-</ul>
-<br>
-<br>
-<h4>My Idea</h4>
-<div class="card">
-    {{#each ideas }}
-    <div class="card-header">
-        {{ id }} : {{ this.summary }}
+        <a class="text-monospace" href="http://localhost:3000/myaccount/"></a>
+        <br><br>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="btn btn-info" href="/idea"><span class="button2">Create an Idea</span></a>
+            </li>
+        </ul>
+        <br>
+        <br>
+        <h4>My Idea</h4>
+        <div class="wrapper">
+            {{#each ideas }}
+            <p class="box1">
+                <font size="6"><b>#{{ id }} - {{ this.summary }}</b> <br>
+                    <font size="5" color="gray"> Limit of Participants :{{ this.numberOfParticipant }} people</font>
+                    <br>
+                    Description : <br>
+                    　　<font color="#808000">{{ this.description }}</font><br>
+                    <br>
+                    Initial Cost : <font color="#808000">{{ currency this.initialCost}}</font> <br>
+                    Monthly Running Cost : <font color="#808000">{{ currency this.runningCost }} </font><br>
+                    Number of Month to pay off debt : <font color="#808000">{{ this.goalYears}}th month</font><br>
+                    Participants: <font color="#808000">{{ idea.participants }} </font><br>
+                    Comment: <font color="#808000">{{ idea.comments }} </font><br>
+                    <br><br>
+                    <a href="/analysis/{{ this.id }}" class="badge badge-pill badge-danger"><span
+                            class="button４">ANALYSIS</span></a>
+                    <a href="/edit/{{ this.id }}" class="badge badge-pill badge-warning"><span
+                            class="button４">EDIT</span></a>
+                    <a href="/delete/{{ this.id }}" class="badge badge-pill badge-dark" data-id="{{ this.id }}"><span
+                            class="button４">DELETE</span></a>
+            </p>
+
+            {{/each}}
+        </div>
+
+        <h4>Joined Idea</h4>
+        <div class="wrapper">
+            {{#each ideas }}
+            <p class="box1">
+                <font size="6"><b>#{{ id }} - {{ this.summary }}</b> <br>
+                    <font size="5" color="gray"> Limit of Participants :{{ this.numberOfParticipant }} people</font>
+                    <br>
+                    Description : <br>
+                    　　<font color="#808000">{{ this.description }}</font><br>
+                    <br>
+                    Initial Cost : <font color="#808000">{{ currency this.initialCost}}</font> <br>
+                    Monthly Running Cost : <font color="#808000">{{ currency this.runningCost }} </font><br>
+                    Number of Month to pay off debt : <font color="#808000">{{ this.goalYears}}th month</font><br>
+                    Participants: <font color="#808000">{{ participant }} </font><br>
+                    Comment: <font color="#808000">{{ Comment}} </font><br>
+                    <br><br>
+                    <a href="/analysis/{{ this.id }}" class="badge badge-pill badge-danger"><span
+                            class="button４">ANALYSIS</span></a>
+                    <a href="/edit/{{ this.id }}" class="badge badge-pill badge-warning"><span
+                            class="button４">EDIT</span></a>
+                    <a href="/delete/{{ this.id }}" class="badge badge-pill badge-dark" data-id="{{ this.id }}"><span
+                            class="button４">DELETE</span></a>
+            </p>
+
+            {{/each}}
+        </div>
     </div>
-    <div class="card-body" id="{{ this.id }}">
-        <h5 class="card-title">Limit of Participants :{{ this.numberOfParticipant }}</h5>
-        <p class="card-text">Description : <br>
-            {{ this.description }} <br>
-            Participants:
-            {{ this.participants}}
-        </p>
-        <p>
-            <a href="/analysis/{{ this.id }}" class="badge badge-pill badge-danger"><span class="button４">ANALYSIS</span></a>
-            <a href="/edit/{{ this.id }}" class="badge badge-pill badge-warning"><span class="button４">EDIT</span></a>
-            <a href="/delete/{{ this.id }}" class="badge badge-pill badge-dark" data-id="{{ this.id }}"><span
-                    class="button４">DELETE</span></a>
-
-        </p>
-        <script>
-            document.addEventListener('click', async (e) => {
-                if (e.target.className === 'delete') {
-                    const animalId = e.target.getAttribute('data-id');
-                    console.log(animalId)
-                    await deleteAnimal(animalId)
-                    const animal = document.getElementById(animalId);
-                    animal.parentNode.removeChild(animal);
-                };
-            });
-
-            async function deleteAnimal(id) {
-                let response = await fetch("/delete/" + id);
-                let isDeleted = response.json().deleted;
-
-                return isDeleted;
-            }
-        </script>
-        <!--
-        <script>
-            $(function () {
-                $('.btn_vote').click(function () {
-                    $(this).toggleClass('on');
-                    var id = $(this).attr('id');
-                    $(this).hasClass('on') ? Vote(id, 'plus') : Vote(id, 'minus');
-                });
-            });
-            function Vote(id, plus) {
-                cls = $('.' + id);
-                cls_num = Number(cls.html());
-                count = plus == 'minus' ? cls_num - 1 : cls_num + 1;
-                $.get('vote.php', { 'file': id, 'count': count }, function () {
-                    cls.html(count)
-                });
-            }
-        </script>
-        -->
-        <button id='increment button1'></button>
-        <div id='count'> {{ counter }}</div>
-        <script src='/lib/axios/axios.min.js'></script>
-        <script>
-            document.getElementById('increment').addEventListener('click', updateCounter);
-
-            async function updateCounter() {
-                const url = '/api/increment';
-                let response = await axios.get(url);
-                let counterObj = response.data;
-                document.getElementById('count').innerText = counterObj.counter;
-
-            }
-        </script>
-    </div>
-    {{/each}}
-    </dir>
+</div>

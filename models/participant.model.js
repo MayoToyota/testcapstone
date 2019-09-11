@@ -1,6 +1,5 @@
-module.exports = (db) => {
-
-    const Participant = db.sequelize.define("participant", {
+module.exports = db => {
+    const Participant = db.sequelize.define('participant', {
         id: {
             type: db.Sequelize.INTEGER,
             primaryKey: true,
@@ -10,15 +9,15 @@ module.exports = (db) => {
             type: db.Sequelize.STRING,
         },
         email: {
-            type: db.Sequelize.STRING
+            type: db.Sequelize.STRING,
         },
-        position:{
-            type: db.Sequelize.STRING
+        position: {
+            type: db.Sequelize.STRING,
         },
         reason: {
             type: db.Sequelize.STRING,
-        }
+        },
     });
 
     return Participant;
- };
+};

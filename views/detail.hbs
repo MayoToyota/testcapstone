@@ -1,52 +1,28 @@
-<h2>Detail Page - Idea # :{{ id }} - {{ idea.summary }}</h2>
-<a type="button" class="btn btn-light" onclick="history.back()">Back</a>
-<a type="button" class="btn btn-light" onclick="location.reload(true)">Refresh</a>
-<a type="button" class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+<div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
+    <div class="content1">
 
-<table class="table table-hover" hspace="20" vspace="20">
-    <thead>
-        <tr>
-            <th scope="col">Category</th>
-            <th scope="col"> </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">Summary :</th>
-            <td>{{ idea.summary }}</td>
-        </tr>
-       
-        <tr>
-            <th scope="row">Description :</th>
-            <td>{{ idea.description }}</td>
-        </tr>
-        
-        <tr>
-            <th scope="row">Initial Cost :</th>
-            <td>{{ currency idea.initialCost }}</td>
-        </tr>
-       
-        <tr>
-            <th scope="row">Running Cost :</th>
-            <td>{{ currency idea.runningCost }}</td>
-        </tr>
-       
-        <tr>
-            <th scope="row">Limit of Participants :</th>
-            <td>{{ idea.numberOfParticipant }} people</td>
-        </tr>
-       
-        <tr>
-            <th scope="row">Number of Month to pay off debt :</th>
-            <td>{{ idea.goalYears }}th month</td>
-        </tr>
-        <tr>
-            <th scope="row"></th>
-            <td></td>
-        </tr>
-        <tr>
-            <th scope="row">Comment :</th>
-            <td>{{ idea.goalYears }}</td>
-        </tr>
-    </tbody>
-</table>
+        <h2>Detail</h2>
+        <a class="btn btn-light" onclick="history.back()">Back</a>
+        <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
+        <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+        <br><br><br><br>
+        <div class="wrapper">
+            <p class="box1">
+                <font size="6">#{{ id }} - {{ idea.summary }}</font> <br>
+                <font size="5" color="gray"> Limit of Participants :{{ idea.numberOfParticipant }} people</font> <br>
+                Description : <br>
+                　　<font color="#808000">{{ idea.description }}</font><br>
+                <br>
+                Initial Cost : <font color="#808000">{{ currency idea.initialCost}}</font> <br>
+                Monthly Running Cost : <font color="#808000">{{ currency idea.runningCost }} </font><br>
+                Number of Month to pay off debt : <font color="#808000">{{ idea.goalYears }}th month</font><br>
+
+                Participants: <font color="#808000">{{ idea.participants }} </font><br>
+                Comment: <font color="#808000">{{ idea.comments }} </font><br>
+
+                <br><br>
+                <a href="/comment/{{ this.id }}" class="btn btn-secondary"><span class="button3">COMMENT</span></a>
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,6 @@
 body {
-  font-family: 'Times New Roman', Times, serif;
-  padding: 50px;
-  font-size: 2em;
+    padding: 50px;
+    font-size: 2em;
 }
 
 #ideas-list {
@@ -20,6 +19,32 @@ a {
 
 button.button1 {
     font-family: 'Amatic SC', cursive;
+    border-radius: 3em 0.7em 2em 0.7em/0.7em 2em 0.7em 3em;
+    border: 3px solid #ccc;
+}
+
+.wrapper {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2em;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+p {
+    background: rgb(253, 253, 253);
+    border-radius: 3em 0.7em 2em 0.7em/0.7em 2em 0.7em 3em;
+    border: 3px solid #ccc;
+    padding: 4%;
+    width: 1000px;
+    margin: 3px;
+}
+
+.box1 {
+    border: 1px solid #333;
+}
+
+.count {
+    font-size: 5em;
 }
 
 h1 {
@@ -32,8 +57,7 @@ h1 {
 h2 {
     font-family: 'Amatic SC', cursive;
     padding: 0.5em;
-    border: 3px solid #ccc;
-    border-radius: 3em 0.7em 2em 0.7em/.7em 2em 0.7em 3em;
+    font-weight: 1900;
 }
 
 h4 {
@@ -65,4 +89,9 @@ h4 {
 
 .minus {
     color: red;
+}
+
+.content1 {
+    position: relative;
+    left: 90px;
 }

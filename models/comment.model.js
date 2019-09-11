@@ -1,5 +1,4 @@
-module.exports = (db) => {
-
+module.exports = db => {
     const Comment = db.sequelize.define('comment', {
         id: {
             type: db.Sequelize.INTEGER,
@@ -8,8 +7,8 @@ module.exports = (db) => {
         },
         comment: {
             type: db.Sequelize.STRING,
-        }
+        },
     });
 
     return Comment;
- };
+};
