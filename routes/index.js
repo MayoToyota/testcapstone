@@ -44,15 +44,16 @@ router.get('/comment/:id', async (req, res) => {
 });
 
 router.post('/comment/:id', async (req, res) => {
-    let { id, comment } = req.body;
+    let { id, text } = req.body;
     let ideaId = req.params.id;
     try {
         if (id) {
-            comment = await Comment.findByPk(id);
-            comment.comment = comment;
-            await participant.save();
+            let comment = await Comment.findByPk(id);
+            //console.log("comment", comment)
+            comment.text = text;
+            await comment.save();
         } else {
-            comment = await Comment.create(req.body);
+            let comment = await Comment.create(req.body);
             comment.ideaId = ideaId;
             await comment.save();
         }
@@ -60,7 +61,7 @@ router.post('/comment/:id', async (req, res) => {
         console.log(e);
     }
 
-    res.redirect('/detail');
+    res.redirect('/');
 });
 
 //Counter

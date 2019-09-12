@@ -1,6 +1,5 @@
 <div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
     <div class="content1">
-
         <h2>Detail</h2>
         <a class="btn btn-light" onclick="history.back()">Back</a>
         <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
@@ -16,9 +15,19 @@
                 Initial Cost : <font color="#808000">{{ currency idea.initialCost}}</font> <br>
                 Monthly Running Cost : <font color="#808000">{{ currency idea.runningCost }} </font><br>
                 Number of Month to pay off debt : <font color="#808000">{{ idea.goalYears }}th month</font><br>
-
-                Participants: <font color="#808000">{{ idea.participants }} </font><br>
-                Comment: <font color="#808000">{{ idea.comments }} </font><br>
+                Participants: <br>
+                {{#each idea.participants}}
+                <span class="push_right">
+                Name-<font color="#0033CC">{{ this.name }} </font><br>
+                </span>
+                <br>
+                {{/each}}
+                Comment: <br>
+                {{#each idea.comments}}
+                <span class="push_right">
+                <font color="#0033CC">{{ this.text }} </font><br>
+                </span>
+                {{/each}}
 
                 <br><br>
                 <a href="/comment/{{ this.id }}" class="btn btn-secondary"><span class="button3">COMMENT</span></a>

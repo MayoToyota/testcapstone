@@ -47,6 +47,10 @@ p {
     font-size: 5em;
 }
 
+.push_right{
+    margin-left: 20px
+}
+
 h1 {
     font-family: 'Amatic SC', cursive;
     color: #364e96;

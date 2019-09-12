@@ -26,9 +26,18 @@
                     <br>
                     Initial Cost : <font color="#808000">{{ currency this.initialCost}}</font> <br>
                     Monthly Running Cost : <font color="#808000">{{ currency this.runningCost }} </font><br>
-                    Number of Month to pay off debt : <font color="#808000">{{ this.goalYears}}th month</font><br>
-                    Participants: <font color="#808000">{{ idea.participants }} </font><br>
-                    Comment: <font color="#808000">{{ idea.comments }} </font><br>
+                    Number of Month to pay off debt : <font color="#808000">{{ this.goalYears}}th month</font><br><br>
+                    Participants: <br>
+                    {{#each this.participants}}
+                    Name-<font color="#0033CC">{{ this.name }} </font><br>
+                    Email-<font color="#0033CC">{{ this.email }} </font><br>
+                    Position-<font color="#0033CC">{{ this.position }} </font><br>
+                    Reason-<font color="#0033CC">{{ this.reason }} </font><br>
+                    <br>
+                    {{/each}}
+                    {{#each this.comments}}
+                    Comment: <font color="#808000">{{ this.comment }} </font><br>
+                    {{/each}}
                     <br><br>
                     <a href="/analysis/{{ this.id }}" class="badge badge-pill badge-danger"><span
                             class="button４">ANALYSIS</span></a>
@@ -54,8 +63,8 @@
                     Initial Cost : <font color="#808000">{{ currency this.initialCost}}</font> <br>
                     Monthly Running Cost : <font color="#808000">{{ currency this.runningCost }} </font><br>
                     Number of Month to pay off debt : <font color="#808000">{{ this.goalYears}}th month</font><br>
-                    Participants: <font color="#808000">{{ participant }} </font><br>
-                    Comment: <font color="#808000">{{ Comment}} </font><br>
+                    Participants: <font color="#808000">{{ this.participants }} <br></font><br>
+                    Comment: <font color="#808000">{{ this.comments }} </font><br>
                     <br><br>
                     <a href="/analysis/{{ this.id }}" class="badge badge-pill badge-danger"><span
                             class="button４">ANALYSIS</span></a>

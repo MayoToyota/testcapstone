@@ -5,8 +5,8 @@ module.exports = db => {
             primaryKey: true,
             autoIncrement: true,
         },
-        comment: {
-            type: db.Sequelize.STRING,
+        text: {
+            type: db.Sequelize.TEXT,
         },
     });
 
