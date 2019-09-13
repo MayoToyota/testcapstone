@@ -17,7 +17,7 @@
             {{#each ideas }}
             <p class="box1">
                 <font size="6"># {{ id }} - {{ this.summary }}</font> <br>
-                <font size="6" color="gray"> Limit of Participants :{{ this.numberOfParticipant }} </font> <br>
+                <font size="6" color="gray"> Limit of Participants :{{ this.numberOfParticipant }} people</font> <br>
                 <font size="6"> Description : </font><br>
                 <font size="6" color="#808000">{{ this.description }} </font><br>
                 <br>
@@ -25,21 +25,22 @@
                 <a href="/detail/{{ this.id }}" class="btn btn-warning"><span class="button3">DETAILS</span></a>
                 <a href="/comment/{{ this.id }}" class="btn btn-secondary"><span class="button3">COMMENT</span></a>
                 <img id="increment" src="http://urbanqee.com/webutil/like/img/smile-face480.png"
-                    style="height:35px; width:35px;">
-                <a id='count'> {{ this.counter }}</a>
-
+                    style="height:35px; width:35px;" class="smile">
+                <a id='count' class='count'> {{ this.counter }}</a>
+        {{/each}}
         <script src='/lib/axios/axios.min.js'></script>
         <script>
-            document.getElementById('increment').addEventListener('click', updateCounter);
+            document.getElementsByClassName('smile').addEventListener('click', updateCounter);
 
             async function updateCounter() {
                 const url = '/api/increment';
                 let response = await axios.get(url);
                 let counterObj = response.data;
-                document.getElementById('count').innerText = counterObj.counter;
+                document.getElementsByClassName('count').innerText = counterObj.counter;
             }
+            console.log(counterObj)
         </script>
-        {{/each}}
+        
         </p>
     </div>
 </div>

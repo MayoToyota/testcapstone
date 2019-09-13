@@ -9,12 +9,14 @@ const isAdmin = require('../controllers/auth-controller').isAdmin;
 
 //Home
 router.get('/', async (req, res) => {
+    let user = req.user;
     let ideas = await Idea.findAll();
-    res.render('home', { ideas });
+    res.render('home', { ideas, user: req.user });
 });
 
 //Detail page
 router.get('/detail/:id', async (req, res) => {
+    let user = req.user;
     let id = req.params.id;
     let idea = await Idea.findByPk(req.params.id, {
         include: [
@@ -26,12 +28,12 @@ router.get('/detail/:id', async (req, res) => {
             },
         ],
     });
-    res.render('detail', { idea, id });
-    console.log(idea);
+    res.render('detail', { idea, id, user: req.user });
 });
 
 //Comment page
 router.get('/comment/:id', async (req, res) => {
+    let user = req.user;
     let ideaId = req.params.id;
     let idea = await Idea.findByPk(req.params.id, {
         include: [
@@ -40,10 +42,11 @@ router.get('/comment/:id', async (req, res) => {
             },
         ],
     });
-    res.render('comment', { idea, ideaId });
+    res.render('comment', { idea, ideaId, user: req.user });
 });
 
 router.post('/comment/:id', async (req, res) => {
+    let user = req.user;
     let { id, text } = req.body;
     let ideaId = req.params.id;
     try {
@@ -143,10 +146,11 @@ router.use(isLoggedIn);
 
 //Join page
 router.get('/join/:id', async (req, res) => {
+    let user = req.user;
     let idea = await Idea.findByPk(req.params.id);
     let ideaId = req.params.id;
     let summary = idea.summary;
-    res.render('join', { ideaId, summary });
+    res.render('join', { ideaId, summary, user: req.user });
 });
 
 router.post('/join/:id', async (req, res) => {
@@ -166,6 +170,7 @@ router.post('/join/:id', async (req, res) => {
         } else {
             participant = await Participant.create(req.body);
             participant.ideaId = ideaId;
+            participant.userId = req.user.id;
             await participant.save();
         }
     } catch (e) {
@@ -177,6 +182,7 @@ router.post('/join/:id', async (req, res) => {
 
 //MyAccount page
 router.get('/myaccount', async (req, res) => {
+    let user = req.user;
     let ideas = await Idea.findAll({
         where: {
             userId: req.user.id,
@@ -190,13 +196,21 @@ router.get('/myaccount', async (req, res) => {
             },
         ],
     });
-
-    res.render('myaccount', { ideas });
+    let participant = await Participant.findAll({
+        where: {
+            userId: req.user.id,
+        },
+        include: {
+            model: Idea,
+        },
+    });
+    res.render('myaccount', { ideas, participant, user: req.user });
 });
 
 //Calculator
 router.get('/calculator', (req, res) => {
-    res.render('calculator');
+    let user = req.user;
+    res.render('calculator', { user: req.user });
 });
 
 router.post('/calculator', async (req, res) => {
@@ -206,9 +220,10 @@ router.post('/calculator', async (req, res) => {
     res.redirect('/calculator', { totalAmount });
 });
 
-//Creating an idea
+//Create an idea
 router.get('/idea', (req, res) => {
-    res.render('idea');
+    let user = req.user;
+    res.render('idea', { user: req.user });
 });
 
 router.post('/idea', async (req, res) => {
@@ -252,8 +267,9 @@ router.get('/idea2', (req, res) => {
 
 //Edit ideas
 router.get('/edit/:id', async (req, res) => {
+    let user = req.user;
     let idea = await Idea.findByPk(req.params.id);
-    res.render('edit', { idea });
+    res.render('edit', { idea, user: req.user });
 });
 
 router.post('/edit/:id', async (req, res) => {
@@ -293,6 +309,7 @@ router.get('/delete/:id', async (req, res) => {
 
 //Analysis
 router.get('/analysis/:id', async (req, res) => {
+    let user = req.user;
     let idea = await Idea.findByPk(req.params.id);
     let ideaId = req.params.id;
     let summary = idea.summary;
@@ -382,6 +399,7 @@ router.get('/analysis/:id', async (req, res) => {
                 T11Noi,
                 T12Noi,
                 TFyearNoi,
+                user: req.user,
             });
         }
     } catch (e) {

@@ -27,21 +27,19 @@ button.button1 {
     font-family: 'Amatic SC', cursive;
     font-size: 2em;
     padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
 }
-p {
+p.box1 {
     background: rgb(253, 253, 253);
     border-radius: 3em 0.7em 2em 0.7em/0.7em 2em 0.7em 3em;
     border: 3px solid #ccc;
     padding: 4%;
     width: 1000px;
     margin: 3px;
-}
-
-.box1 {
     border: 1px solid #333;
 }
+
 
 .count {
     font-size: 5em;
@@ -62,6 +60,13 @@ h2 {
     font-family: 'Amatic SC', cursive;
     padding: 0.5em;
     font-weight: 1900;
+}
+
+h3{
+    font-family: 'Amatic SC', cursive;
+    padding: 0.5em;
+    font-size: 4em;
+    font-weight: bold;
 }
 
 h4 {
@@ -98,4 +103,8 @@ h4 {
 .content1 {
     position: relative;
     left: 90px;
+}
+
+.textarea{
+    font-size:5em
 }

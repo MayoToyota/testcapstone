@@ -1,6 +1,6 @@
 <div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
     <div class="content1">
-        <h2>Analysis - Idea # :{{ ideaId }} -{{ summary }}</h2>
+        <h2>Analysis - Idea #{{ ideaId }} : {{ summary }}</h2>
         <a class="btn btn-light" onclick="history.back()">Back</a>
         <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
         <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
@@ -19,6 +19,8 @@
         </div>
         <br>
         <a href="/edit/{{ ideaId }}" class="btn btn-warning"><span class="button3">EDIT</span></a>
+        <a href="/calculator"
+                    class="btn btn-outline-primary"><span class="button3">Calculator</span></a>
         <br><br>
     </div>
     <script type="text/javascript">

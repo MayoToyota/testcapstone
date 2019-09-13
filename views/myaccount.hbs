@@ -14,7 +14,7 @@
         </ul>
         <br>
         <br>
-        <h4>My Idea</h4>
+        <h3>[ My Idea ]</h3>
         <div class="wrapper">
             {{#each ideas }}
             <p class="box1">
@@ -35,8 +35,9 @@
                     Reason-<font color="#0033CC">{{ this.reason }} </font><br>
                     <br>
                     {{/each}}
+                    Comment:
                     {{#each this.comments}}
-                    Comment: <font color="#808000">{{ this.comment }} </font><br>
+                    <font color="#808000">{{ this.comment }} </font><br>
                     {{/each}}
                     <br><br>
                     <a href="/analysis/{{ this.id }}" class="badge badge-pill badge-danger"><span
@@ -49,32 +50,31 @@
 
             {{/each}}
         </div>
-
-        <h4>Joined Idea</h4>
+        <br>
+        <h3>[ Joined Idea ]</h3>
         <div class="wrapper">
-            {{#each ideas }}
             <p class="box1">
-                <font size="6"><b>#{{ id }} - {{ this.summary }}</b> <br>
-                    <font size="5" color="gray"> Limit of Participants :{{ this.numberOfParticipant }} people</font>
+                {{#each participant }}
+                <font size="6"><b>#{{ this.idea.id }} - {{ this.idea.summary }}</b>
+                    <font size="5" color="gray"> Limit of Participants :{{ this.idea.numberOfParticipant }} people
+                    </font>
                     <br>
                     Description : <br>
-                    　　<font color="#808000">{{ this.description }}</font><br>
+                    　　<font color="#808000">{{ this.idea.description }}</font><br>
                     <br>
-                    Initial Cost : <font color="#808000">{{ currency this.initialCost}}</font> <br>
-                    Monthly Running Cost : <font color="#808000">{{ currency this.runningCost }} </font><br>
-                    Number of Month to pay off debt : <font color="#808000">{{ this.goalYears}}th month</font><br>
-                    Participants: <font color="#808000">{{ this.participants }} <br></font><br>
-                    Comment: <font color="#808000">{{ this.comments }} </font><br>
-                    <br><br>
-                    <a href="/analysis/{{ this.id }}" class="badge badge-pill badge-danger"><span
-                            class="button４">ANALYSIS</span></a>
-                    <a href="/edit/{{ this.id }}" class="badge badge-pill badge-warning"><span
-                            class="button４">EDIT</span></a>
-                    <a href="/delete/{{ this.id }}" class="badge badge-pill badge-dark" data-id="{{ this.id }}"><span
-                            class="button４">DELETE</span></a>
+                    Initial Cost : <font color="#808000">{{ currency this.idea.initialCost}}</font> <br>
+                    Monthly Running Cost : <font color="#808000">{{ currency this.idea.runningCost }} </font><br>
+                    Number of Month to pay off debt : <font color="#808000">{{ this.idea.goalYears}}th month</font>
+                    <br>
+                    <a href="/analysis/{{ this.id }}" class="btn btn-danger"><span class="button3">ANALYSIS</span></a>
+                    <a href="/detail/{{ this.id }}" class="btn btn-outline-warning"><span
+                            class="button3">DETAILS</span></a>
+                    <a href="/comment/{{ this.id }}" class="btn btn-outline-secondary"><span
+                            class="button3">COMMENT</span></a>
+                    {{/each}}
             </p>
 
-            {{/each}}
+
         </div>
     </div>
 </div>

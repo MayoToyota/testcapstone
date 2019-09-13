@@ -9,7 +9,7 @@ module.exports = db => {
             type: db.Sequelize.STRING,
         },
         description: {
-            type: db.Sequelize.STRING,
+            type: db.Sequelize.TEXT,
         },
         initialCost: {
             type: db.Sequelize.INTEGER,

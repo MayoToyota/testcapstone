@@ -1,7 +1,7 @@
 <div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
     <div class="content1">
 
-        <h2>Comments</h2>
+        <h2>Comment</h2>
         <a class="btn btn-light" onclick="history.back()">Back</a>
         <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
         <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
@@ -10,7 +10,7 @@
         <form action="/comment/{{ ideaId }}" method="POST">
         <div class="wrapper">
             <p class="box1">
-                <font size="6">#{{ id }} - {{ idea.summary }}</font> <br>
+                <font size="6">#{{ ideaId }} - {{ idea.summary }}</font> <br>
                 <font size="5" color="gray"> Limit of Participants :{{ idea.numberOfParticipant }} people</font> <br>
                 Description : <br>
                 　　<font color="#808000">{{ idea.description }}</font><br>
@@ -20,13 +20,13 @@
                 Number of Month to pay off debt : <font color="#808000">{{ idea.goalYears }}th month</font><br>
                 Comment: <br>
                 {{#each idea.comments}}
-                <span class="push_right">
+                　○<span class="push_right">
                 <font color="#0033CC">{{ this.text }} </font><br>
                 </span>
                 {{/each}}
 
                 <br>
-                New Comment: <textarea rows="10" cols="80" class="form-control" name="text"></textarea>
+                New Comment: <textarea rows="5" cols="70" class="form-control textarea" name="text" style="font-size:80%;"></textarea>
                 <br>
                 <button class="btn btn-secondary button1" type="submit">Submit</button>
             </p>

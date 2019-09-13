@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
-    'intrapreneurship',
+    process.env.DB_ENV || 'intrapreneurship',
     process.env.DB_USER || 'root',
     process.env.DB_PASSWORD || '',
     {
@@ -42,12 +42,14 @@ db.Comment = require('../models/comment.model')(db);
 db.User.hasMany(db.Idea);
 db.Idea.belongsTo(db.User);
 
+db.Participant.belongsTo(db.User);
+
 db.Idea.hasMany(db.Participant);
 db.Participant.belongsTo(db.Idea);
 
 db.Idea.hasMany(db.Comment);
 db.Comment.belongsTo(db.Idea);
 
-sequelize.sync();
+sequelize.sync({ force: true });
 
 module.exports = db;
