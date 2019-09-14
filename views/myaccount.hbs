@@ -29,15 +29,19 @@
                     Number of Month to pay off debt : <font color="#808000">{{ this.goalYears}}th month</font><br><br>
                     Participants: <br>
                     {{#each this.participants}}
+                　○<span class="push_right">
                     Name-<font color="#0033CC">{{ this.name }} </font><br>
-                    Email-<font color="#0033CC">{{ this.email }} </font><br>
-                    Position-<font color="#0033CC">{{ this.position }} </font><br>
-                    Reason-<font color="#0033CC">{{ this.reason }} </font><br>
+                    　　　Email-<font color="#0033CC">{{ this.email }} </font><br>
+                    　　　Position-<font color="#0033CC">{{ this.position }} </font><br>
+                    　　　Reason-<font color="#0033CC">{{ this.reason }} </font><br>
+                    </span>
                     <br>
                     {{/each}}
-                    Comment:
+                    Comment: <br>
                     {{#each this.comments}}
-                    <font color="#808000">{{ this.comment }} </font><br>
+                    　○<span class="push_right">
+                    <font color="#0033CC">{{ this.text }} </font><br>
+                    </span>
                     {{/each}}
                     <br><br>
                     <a href="/analysis/{{ this.id }}" class="badge badge-pill badge-danger"><span
