@@ -10,7 +10,11 @@ const isAdmin = require('../controllers/auth-controller').isAdmin;
 //Home
 router.get('/', async (req, res) => {
     let user = req.user;
-    let ideas = await Idea.findAll();
+    let ideas = await Idea.findAll({
+        include: {
+            model: User,
+        },
+    });
     res.render('home', { ideas, user: req.user });
 });
 

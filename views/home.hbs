@@ -26,19 +26,19 @@
                 <a href="/comment/{{ this.id }}" class="btn btn-secondary"><span class="button3">COMMENT</span></a>
                 <img id="increment" src="http://urbanqee.com/webutil/like/img/smile-face480.png"
                     style="height:35px; width:35px;" class="smile">
-                <a id='count' class='count'> {{ this.counter }}</a>
+                <a id='count'> {{ this.counter }}</a><br>
+                <font size="5"> Creator : {{ this.user.username }}</font><br>
+
         {{/each}}
         <script src='/lib/axios/axios.min.js'></script>
         <script>
-            document.getElementsByClassName('smile').addEventListener('click', updateCounter);
-
+            document.getElementById('increment').addEventListener('click', updateCounter);
             async function updateCounter() {
                 const url = '/api/increment';
                 let response = await axios.get(url);
                 let counterObj = response.data;
-                document.getElementsByClassName('count').innerText = counterObj.counter;
+                document.getElementById('count').innerText = counterObj.counter;
             }
-            console.log(counterObj)
         </script>
         
         </p>
