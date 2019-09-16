@@ -5,7 +5,7 @@
         <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
         <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
         <br><br>
-        <div class="card" style="width: 40rem;">
+        <div class="card" style="width: 40em;">
             <div class="card-body">
                 <h5 class="card-title">Time to reach net positive income :
                     <font color="red">{{ goalMonth }}</font>
@@ -20,13 +20,12 @@
         <br>
         <a href="/edit/{{ ideaId }}" class="btn btn-warning"><span class="button3">EDIT</span></a>
         <a class="btn btn-outline-danger" href="/myaccount"><span class="button3">Go To My Page</span></a>
-        <a href="/calculator"
-                    class="btn btn-outline-primary"><span class="button3">Calculator</span></a>
+        <a href="/calculator" class="btn btn-outline-primary"><span class="button3">Calculator</span></a>
         <br><br>
     </div>
     <script type="text/javascript">
         onload = function () {
-            var ts = document.getElementsByTagName('td'), t, cnt = ts.length, i = 0;
+            let ts = document.getElementsByTagName('td'), t, cnt = ts.length, i = 0;
             for (; i < cnt; ++i) {
                 t = ts[i];
                 if (t.style.textAlign == "right") {
@@ -48,7 +47,7 @@
     </script>
 
     <form action="/analysis/{{ ideaId }}" method="POST" name="form_comma">
-        <table class="table table-hover table-bordered" id="table">
+        <table class="table table-hover table-bordered" id="table" data-sheet-name="analysis">
             <thead>
                 <tr>
                     <th scope="col">Month</th>
@@ -72,17 +71,17 @@
                 <tr>
                     <th scope="row">Initial Cost</th>
                     <td>{{ currency initial }}</td>
-                    <td style="text-align:right;">0</td>
-                    <td style="text-align:right;">0</td>
-                    <td style="text-align:right;">0</td>
-                    <td style="text-align:right;">0</td>
-                    <td style="text-align:right;">0</td>
-                    <td style="text-align:right;">0</td>
-                    <td style="text-align:right;">0</td>
-                    <td style="text-align:right;">0</td>
-                    <td style="text-align:right;">0</td>
-                    <td style="text-align:right;">0</td>
-                    <td style="text-align:right;">0</td>
+                    <td>{{ currency zero }}</td>
+                    <td>{{ currency zero }}</td>
+                    <td>{{ currency zero }}</td>
+                    <td>{{ currency zero }}</td>
+                    <td>{{ currency zero }}</td>
+                    <td>{{ currency zero }}</td>
+                    <td>{{ currency zero }}</td>
+                    <td>{{ currency zero }}</td>
+                    <td>{{ currency zero }}</td>
+                    <td>{{ currency zero }}</td>
+                    <td>{{ currency zero }}</td>
                     <td> {{ currency initial }} </td>
                 </tr>
                 <tr>
@@ -170,3 +169,40 @@
         </table>
     </form>
 </div>
+<button type="button" id="dl-xlsx" class="btn btn-secondary button1">Export to Excel</button><br><br><br>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.9.10/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+<script>
+    document.getElementById('dl-xlsx').addEventListener('click', function () {
+        let wopts = {
+            bookType: 'xlsx',
+            bookSST: false,
+            type: 'binary'
+        };
+
+        let workbook = { SheetNames: [], Sheets: {} };
+
+        document.querySelectorAll('table.table-bordered').forEach(function (currentValue, index) {
+            let n = currentValue.getAttribute('data-sheet-name');
+            if (!n) {
+                n = 'Sheet' + index;
+            }
+            workbook.SheetNames.push(n);
+            workbook.Sheets[n] = XLSX.utils.table_to_sheet(currentValue, wopts);
+        });
+
+        let wbout = XLSX.write(workbook, wopts);
+
+        function s2ab(s) {
+            let buf = new ArrayBuffer(s.length);
+            let view = new Uint8Array(buf);
+            for (let i = 0; i != s.length; ++i) {
+                view[i] = s.charCodeAt(i) & 0xFF;
+            }
+            return buf;
+        }
+
+        saveAs(new Blob([s2ab(wbout)], { type: 'application/octet-stream' }), 'analysis.xlsx');
+    }, false);
+</script>

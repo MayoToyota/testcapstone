@@ -5,6 +5,8 @@
         <a class="btn btn-light" onclick="history.back()">Back</a>
         <a class="btn btn-light" onclick="location.reload(true)">Refresh</a>
         <a class="btn btn-light" onclick="location.href='http://localhost:3000'">Go to Main</a>
+        <a class="btn btn-outline-danger" href="/myaccount"><span>Go To My Page</span></a>
+
         <br><br>
         <form action="/edit/:id" method="POST">
             <input type='hidden' name='id' value={{ idea.id }} />
@@ -22,7 +24,7 @@
                 Monthly Running Cost: <input class="form-control" type="text" name="runningCost"
                     value="{{ idea.runningCost }}" />
                 <br>
-                Number of Month to reach net positive: <input class="form-control" type="text" name="goalYears"
+                Number of month to reach net positive: <input class="form-control" type="text" name="goalYears"
                     value="{{ idea.goalYears }}" /> <br>
                 Limit Of Participants: <input class="form-control" type="text" name="numberOfParticipant"
                     value="{{ idea.numberOfParticipant }}" />
@@ -31,6 +33,7 @@
             <br>
             <br>
             <button class="btn btn-primary button1" type="submit">Submit Button</button>
+            
         </form>
     </div>
 </div>

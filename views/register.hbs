@@ -1,4 +1,4 @@
-<div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 1200px 0px;">
+<div style="background: url(http://www.line-tatsujin.com/stamp/outline/a30455-0.png) no-repeat 900px 0px;">
     <div class="content1">
         <h2>Create your account</h2>
         <a class="btn btn-light" onclick="history.back()">Back</a>
@@ -9,13 +9,28 @@
             <br>
             <br>
             <div class="form-group">
-                Username: <input name="username" type="text" />
+                Username: <br>
+                <input name="username" type="text" class="userinput" required />
                 <br><br>
-                Password: <input name="password" type="password" />
+                Password: <br>
+                <input name="password" type="password" id="password" class="userinput" required />
+                <br><br>
+                Password (confirm): <br>
+                <input type="password" class="userinput" name="confirm" oninput="CheckPassword(this)" required>
             </div>
             <br>
             <button class="btn btn-success button1" type="submit"><span class="button3">Register</span></button>
-
         </form>
     </div>
 </div>
+<script>
+    function CheckPassword(confirm) {
+        var input1 = password.value;
+        var input2 = confirm.value;
+        if (input1 != input2) {
+            confirm.setCustomValidity("Passwords do not match");
+        } else {
+            confirm.setCustomValidity('');
+        }
+    }
+</script>

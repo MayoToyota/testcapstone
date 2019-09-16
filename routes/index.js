@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
             model: User,
         },
     });
-    res.render('home', { ideas, user: req.user });
+    res.render('home', { ideas, user });
 });
 
 //Detail page
@@ -32,7 +32,7 @@ router.get('/detail/:id', async (req, res) => {
             },
         ],
     });
-    res.render('detail', { idea, id, user: req.user });
+    res.render('detail', { idea, id, user });
 });
 
 //Comment page
@@ -46,17 +46,15 @@ router.get('/comment/:id', async (req, res) => {
             },
         ],
     });
-    res.render('comment', { idea, ideaId, user: req.user });
+    res.render('comment', { idea, ideaId, user });
 });
 
 router.post('/comment/:id', async (req, res) => {
-    let user = req.user;
     let { id, text } = req.body;
     let ideaId = req.params.id;
     try {
         if (id) {
             let comment = await Comment.findByPk(id);
-            //console.log("comment", comment)
             comment.text = text;
             await comment.save();
         } else {
@@ -154,7 +152,7 @@ router.get('/join/:id', async (req, res) => {
     let idea = await Idea.findByPk(req.params.id);
     let ideaId = req.params.id;
     let summary = idea.summary;
-    res.render('join', { ideaId, summary, user: req.user });
+    res.render('join', { ideaId, summary, user });
 });
 
 router.post('/join/:id', async (req, res) => {
@@ -208,13 +206,13 @@ router.get('/myaccount', async (req, res) => {
             model: Idea,
         },
     });
-    res.render('myaccount', { ideas, participant, user: req.user });
+    res.render('myaccount', { ideas, participant, user });
 });
 
 //Calculator
 router.get('/calculator', (req, res) => {
     let user = req.user;
-    res.render('calculator', { user: req.user });
+    res.render('calculator', { user });
 });
 
 router.post('/calculator', async (req, res) => {
@@ -227,7 +225,7 @@ router.post('/calculator', async (req, res) => {
 //Create an idea
 router.get('/idea', (req, res) => {
     let user = req.user;
-    res.render('idea', { user: req.user });
+    res.render('idea', { user });
 });
 
 router.post('/idea', async (req, res) => {
@@ -273,7 +271,7 @@ router.get('/idea2', (req, res) => {
 router.get('/edit/:id', async (req, res) => {
     let user = req.user;
     let idea = await Idea.findByPk(req.params.id);
-    res.render('edit', { idea, user: req.user });
+    res.render('edit', { idea, user });
 });
 
 router.post('/edit/:id', async (req, res) => {
@@ -320,6 +318,7 @@ router.get('/analysis/:id', async (req, res) => {
 
     try {
         if (ideaId) {
+            let zero = 0;
             let initial = idea.initialCost;
             let running = idea.runningCost;
             let TRunning = running * 12;
@@ -374,6 +373,7 @@ router.get('/analysis/:id', async (req, res) => {
             }
         */
             res.render('analysis', {
+                zero,
                 idea,
                 summary,
                 ideaId,
@@ -403,7 +403,7 @@ router.get('/analysis/:id', async (req, res) => {
                 T11Noi,
                 T12Noi,
                 TFyearNoi,
-                user: req.user,
+                user,
             });
         }
     } catch (e) {

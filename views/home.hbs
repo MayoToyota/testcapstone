@@ -28,10 +28,10 @@
                     style="height:35px; width:35px;" class="smile">
                 <a id='count'> {{ this.counter }}</a><br>
                 <font size="5"> Creator : {{ this.user.username }}</font><br>
-
         {{/each}}
         <script src='/lib/axios/axios.min.js'></script>
         <script>
+            
             document.getElementById('increment').addEventListener('click', updateCounter);
             async function updateCounter() {
                 const url = '/api/increment';

@@ -19,8 +19,11 @@ a {
 
 button.button1 {
     font-family: 'Amatic SC', cursive;
-    border-radius: 3em 0.7em 2em 0.7em/0.7em 2em 0.7em 3em;
-    border: 3px solid #ccc;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+    /* border-radius: 3em 0.7em 2em 0.7em/0.7em 2em 0.7em 3em;
+    border: 3px solid #ccc; */
 }
 
 .wrapper {
@@ -40,13 +43,33 @@ p.box1 {
     border: 1px solid #333;
 }
 
-
 .count {
     font-size: 5em;
 }
 
-.push_right{
-    margin-left: 20px
+.push_right {
+    margin-left: 20px;
+}
+
+input.form-control {
+    width: 70%;
+}
+
+input.userinput {
+    width: 40%;
+    height: 40px;
+}
+
+textarea.form-control {
+    width: 70%;
+}
+
+button.btn-lg {
+    width: 70%;
+}
+
+.alert {
+    width: 70%;
 }
 
 h1 {
@@ -62,7 +85,7 @@ h2 {
     font-weight: 1900;
 }
 
-h3{
+h3 {
     font-family: 'Amatic SC', cursive;
     padding: 0.5em;
     font-size: 4em;
@@ -105,6 +128,6 @@ h4 {
     left: 90px;
 }
 
-.textarea{
-    font-size:5em
+.textarea {
+    font-size: 5em;
 }

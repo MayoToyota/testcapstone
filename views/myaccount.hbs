@@ -19,62 +19,61 @@
             {{#each ideas }}
             <p class="box1">
                 <font size="6"><b>#{{ id }} - {{ this.summary }}</b> </font><br>
-                    <font size="5" color="gray"> Limit of Participants :{{ this.numberOfParticipant }} people</font>
-                    <br>
-                    Description : <br>
-                    　　<font color="#808000">{{ this.description }}</font><br>
-                    <br>
-                    Initial Cost : <font color="#808000">{{ currency this.initialCost}}</font> <br>
-                    Monthly Running Cost : <font color="#808000">{{ currency this.runningCost }} </font><br>
-                    Number of Month to reach net positive : <font color="#808000">{{ this.goalYears}}th month</font><br><br>
-                    Participants: <br>
-                    {{#each this.participants}}
-                    　○<span class="push_right">
-                        Name-<font color="#0033CC">{{ this.name }} </font><br>
-                        　　　Email-<font color="#0033CC">{{ this.email }} </font><br>
-                        　　　Position-<font color="#0033CC">{{ this.position }} </font><br>
-                        　　　Reason-<font color="#0033CC">{{ this.reason }} </font><br>
-                    </span>
-                    <br>
-                    {{/each}}
-                    Comment: <br>
-                    {{#each this.comments}}
-                    　○<span class="push_right">
-                        <font color="#0033CC">{{ this.text }} </font><br>
-                    </span>
-                    {{/each}}
-                    <br><br>
-                    <a href="/analysis/{{ this.id }}" class="badge badge-pill badge-danger"><span
-                            class="button４">ANALYSIS</span></a>
-                    <a href="/edit/{{ this.id }}" class="badge badge-pill badge-warning"><span
-                            class="button４">EDIT</span></a>
-                    <a href="/delete/{{ this.id }}" class="badge badge-pill badge-dark" data-id="{{ this.id }}"><span
-                            class="button４">DELETE</span></a>
+                <font size="5" color="gray"> Limit of Participants :{{ this.numberOfParticipant }} people</font>
+                <br>
+                Description : <br>
+                　　<font color="#808000">{{ this.description }}</font><br>
+                <br>
+                Initial Cost : <font color="#808000">{{ currency this.initialCost}}</font> <br>
+                Monthly Running Cost : <font color="#808000">{{ currency this.runningCost }} </font><br>
+                Number of month to reach net positive : <font color="#808000">{{ this.goalYears}}th month</font><br><br>
+                Participants: <br>
+                {{#each this.participants}}
+                　○<span class="push_right">
+                    Name-<font color="#0033CC">{{ this.name }} </font><br>
+                    　　　Email-<font color="#0033CC">{{ this.email }} </font><br>
+                    　　　Position-<font color="#0033CC">{{ this.position }} </font><br>
+                    　　　Reason-<font color="#0033CC">{{ this.reason }} </font><br>
+                </span>
+                <br>
+                {{/each}}
+                Comment: <br>
+                {{#each this.comments}}
+                　○<span class="push_right">
+                    <font color="#0033CC">{{ this.text }} </font><br>
+                </span>
+                {{/each}}
+                <br><br>
+                <a href="/analysis/{{ this.id }}" class="badge badge-pill badge-danger"><span
+                        class="button４">ANALYSIS</span></a>
+                <a href="/edit/{{ this.id }}" class="badge badge-pill badge-warning"><span
+                        class="button４">EDIT</span></a>
+                <a href="/delete/{{ this.id }}" class="badge badge-pill badge-dark" data-id="{{ this.id }}"><span
+                        class="button４">DELETE</span></a>
             </p>
             {{/each}}
         </div>
         <br>
         <h3>[ Joined Idea ]</h3>
-
         <div class="wrapper">
             {{#each participant }}
             <p class="box1">
                 <font size="6">#{{ this.idea.id }} - {{ this.idea.summary }}</font><br>
-                    <font size="5" color="gray"> Limit of Participants :{{ this.idea.numberOfParticipant }} people
-                    </font>
-                    <br>
-                    Description : <br>
-                    　　<font color="#808000">{{ this.idea.description }}</font><br>
-                    <br>
-                    Initial Cost : <font color="#808000">{{ currency this.idea.initialCost}}</font> <br>
-                    Monthly Running Cost : <font color="#808000">{{ currency this.idea.runningCost }} </font><br>
-                    Number of Month to reach net positive : <font color="#808000">{{ this.idea.goalYears}}th month</font>
-                    <br>
-                    <a href="/analysis/{{ this.id }}" class="btn btn-danger"><span class="button3">ANALYSIS</span></a>
-                    <a href="/detail/{{ this.id }}" class="btn btn-outline-warning"><span
-                            class="button3">DETAILS</span></a>
-                    <a href="/comment/{{ this.id }}" class="btn btn-outline-secondary"><span
-                            class="button3">COMMENT</span></a>
+                <font size="5" color="gray"> Limit of Participants :{{ this.idea.numberOfParticipant }} people
+                </font>
+                <br>
+                Description : <br>
+                　　<font color="#808000">{{ this.idea.description }}</font><br>
+                <br>
+                Initial Cost : <font color="#808000">{{ currency this.idea.initialCost}}</font> <br>
+                Monthly Running Cost : <font color="#808000">{{ currency this.idea.runningCost }} </font><br>
+                Number of month to reach net positive : <font color="#808000">{{ this.idea.goalYears}}th month</font>
+                <br>
+                <a href="/analysis/{{ this.idea.id }}" class="btn btn-danger"><span class="button3">ANALYSIS</span></a>
+                <a href="/detail/{{ this.idea.id }}" class="btn btn-outline-warning"><span
+                        class="button3">DETAILS</span></a>
+                <a href="/comment/{{ this.idea.id }}" class="btn btn-outline-secondary"><span
+                        class="button3">COMMENT</span></a>
             </p>
             {{/each}}
 

@@ -17,7 +17,7 @@
                 <br>
                 Initial Cost : <font color="#808000">{{ currency idea.initialCost}}</font> <br>
                 Monthly Running Cost : <font color="#808000">{{ currency idea.runningCost }} </font><br>
-                Number of Month to reach net positive : <font color="#808000">{{ idea.goalYears }}th month</font><br>
+                Number of month to reach net positive : <font color="#808000">{{ idea.goalYears }}th month</font><br>
                 Comment: <br>
                 {{#each idea.comments}}
                 　○<span class="push_right">
@@ -26,7 +26,7 @@
                 {{/each}}
 
                 <br>
-                New Comment: <textarea rows="5" cols="70" class="form-control textarea" name="text" style="font-size:80%;"></textarea>
+                New Comment: <textarea rows="5" class="form-control textarea" name="text" style="font-size:80%;"></textarea>
                 <br>
                 <button class="btn btn-secondary button1" type="submit">Submit</button>
             </p>
