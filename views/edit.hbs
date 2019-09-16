@@ -14,13 +14,15 @@
                 Description : <textarea rows="10" cols="80" class="form-control"
                     name="description"> {{ idea.description }} </textarea>
                 <br>
+                <a href="/calculator"
+                    class="btn btn-outline-primary"><span class="button3">Calculator</span></a> <br><br>
                 Initial Cost: <input class="form-control" type="text" name="initialCost"
                     value="{{ idea.initialCost }}" />
                 <br>
                 Monthly Running Cost: <input class="form-control" type="text" name="runningCost"
                     value="{{ idea.runningCost }}" />
                 <br>
-                Number of Month to pay off debt: <input class="form-control" type="text" name="goalYears"
+                Number of Month to reach net positive: <input class="form-control" type="text" name="goalYears"
                     value="{{ idea.goalYears }}" /> <br>
                 Limit Of Participants: <input class="form-control" type="text" name="numberOfParticipant"
                     value="{{ idea.numberOfParticipant }}" />
