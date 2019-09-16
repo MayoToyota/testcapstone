@@ -50,6 +50,6 @@ db.Participant.belongsTo(db.Idea);
 db.Idea.hasMany(db.Comment);
 db.Comment.belongsTo(db.Idea);
 
-sequelize.sync({ force: true });
+sequelize.sync();
 
 module.exports = db;
