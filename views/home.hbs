@@ -16,11 +16,11 @@
         <div class="wrapper">
             {{#each ideas }}
             <p class="box1">
-                <font size="6"># {{ id }} - {{ this.summary }}</font> <br>
-                <font size="6" color="gray"> Limit of Participants :{{ this.numberOfParticipant }} people</font> <br>
+                <font size="6" color="#CC3366"># {{ id }} - {{ this.summary }}</font> <br>
+                <font size="6" color="gray"> Limit of Participants : {{ this.numberOfParticipant }} people</font> <br>
                 <font size="6"> Description : </font><br>
                 <font size="6" color="#808000">{{ this.description }} </font><br>
-                <br>
+                <font size="6"> Document URL: <a href= "{{ this.url }}" target="_blank" rel="noopener noreferrer">Attachment</a> </font> <br><br>
                 <a href="/join/{{ this.id }}" class="btn btn-info"><span class="button3">JOIN</span></a>
                 <a href="/detail/{{ this.id }}" class="btn btn-warning"><span class="button3">DETAILS</span></a>
                 <a href="/comment/{{ this.id }}" class="btn btn-secondary"><span class="button3">COMMENT</span></a>

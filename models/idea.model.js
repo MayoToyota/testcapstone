@@ -23,6 +23,9 @@ module.exports = db => {
         goalYears: {
             type: db.Sequelize.INTEGER,
         },
+        url: {
+            type: db.Sequelize.TEXT,
+        },
     });
 
     return Idea;

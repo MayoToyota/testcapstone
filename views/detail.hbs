@@ -7,11 +7,12 @@
         <br><br><br><br>
         <div class="wrapper">
             <p class="box1">
-                <font size="6">#{{ id }} - {{ idea.summary }}</font> <br>
+                <font size="6" color="#CC3366">#{{ id }} - {{ idea.summary }}</font> <br>
                 <font size="5" color="gray"> Limit of Participants :{{ idea.numberOfParticipant }} people</font> <br>
                 Description : <br>
                 　　<font color="#808000">{{ idea.description }}</font><br>
-                <br>
+                <font size="5"> Document URL: <a href= "{{ idea.url }}" target="_blank" rel="noopener noreferrer">Attachment</a> </font> <br><br>
+
                 Initial Cost : <font color="#808000">{{ currency idea.initialCost}}</font> <br>
                 Monthly Running Cost : <font color="#808000">{{ currency idea.runningCost }} </font><br>
                 Number of month to reach net positive : <font color="#808000">{{ idea.goalYears }}th month</font><br>

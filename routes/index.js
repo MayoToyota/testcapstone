@@ -66,7 +66,9 @@ router.post('/comment/:id', async (req, res) => {
         console.log(e);
     }
 
-    res.redirect('/');
+    let detailPage = `/detail/${ideaId}`;
+
+    res.redirect(detailPage);
 });
 
 //Counter
@@ -237,6 +239,7 @@ router.post('/idea', async (req, res) => {
         runningCost,
         goalYears,
         numberOfParticipant,
+        url,
     } = req.body;
 
     let idea;
@@ -249,6 +252,7 @@ router.post('/idea', async (req, res) => {
             idea.runningCost = Number.parseInt(runningCost);
             idea.goalYears = Number.parseInt(goalYears);
             idea.numberOfParticipant = Number.parseInt(numberOfParticipant);
+            idea.url = url;
 
             await idea.save();
         } else {
@@ -283,6 +287,7 @@ router.post('/edit/:id', async (req, res) => {
         runningCost,
         goalYears,
         numberOfParticipant,
+        url,
     } = req.body;
     let idea;
 
@@ -293,10 +298,13 @@ router.post('/edit/:id', async (req, res) => {
     idea.runningCost = Number.parseInt(runningCost);
     idea.goalYears = Number.parseInt(goalYears);
     idea.numberOfParticipant = Number.parseInt(numberOfParticipant);
+    idea.url = url;
 
     await idea.save();
 
-    res.redirect('/myaccount');
+    let analysisPage = `/analysis/${idea.id}`;
+
+    res.redirect(analysisPage);
 });
 
 //Delete ideas
